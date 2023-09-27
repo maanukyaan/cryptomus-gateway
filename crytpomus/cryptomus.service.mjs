@@ -2,12 +2,12 @@ import axios from "axios";
 import crypto from "node:crypto";
 
 export default class CryptomusService {
-
   apiKey;
   merchantId;
 
   constructor(apiKey, merchantId) {
-    apiKey, merchantId;
+    this.apiKey = apiKey;
+    this.merchantId = merchantId;
   }
 
   getHeader(payload) {

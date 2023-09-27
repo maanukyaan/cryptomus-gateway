@@ -6,7 +6,7 @@ const app = express();
 const port = 3000; // Порт, на котором будет работать ваш сервер
 
 const APIKey =
-  "pwHpGDw8V1A4TWa66jjzikUsgmzsmFcdh7TwwOIH3NCFQZWWSfq34PtSdMcJn3gYy1LbAnX8ZJCkQxF8BWY0nkMUiyJExrAdqCvPEOa7INVf4HxVy4Yu37lA3vPjPc2X";
+  "G3r3iagshze48CS24pKLwF7OGjz6bCmOgrSZsp4Klp0wkZuoNOZduYDjdBOeNX9CyEwMgaR4wEhDhxwZYZR7KuQvJJJKntOpRFed0H07imaJCzcY31h8oTy400q3V4q0";
 const merchantId = "f8396565-16a1-4bf2-b47c-0cae09817b23";
 
 async function startServer() {
