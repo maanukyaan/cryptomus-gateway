@@ -37,8 +37,12 @@ export default class CryptomusService {
           headers: this.getHeader(JSON.stringify(payload)),
         }
       );
+
+      // Вернуть данные клиенту
+      return data;
     } catch (error) {
       console.error(error);
+      return null;
     }
   }
 
@@ -55,8 +59,12 @@ export default class CryptomusService {
           headers: this.getHeader(JSON.stringify(payload)),
         }
       );
+
+      // Вернуть данные клиенту
+      return data;
     } catch (error) {
       console.error(error);
+      return null;
     }
   }
 }

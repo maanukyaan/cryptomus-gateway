@@ -27,7 +27,7 @@ async function startServer() {
 
     const response = await cryptomusService.createPayment(amount, orderId);
     if (!response) {
-      res.send("Error!");
+      res.status(500).send("Error!");
       return;
     }
 
