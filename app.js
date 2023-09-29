@@ -1,6 +1,7 @@
 import express from "express";
 // const { DatabaseService } = require("./database/database.service");
 import CryptomusService from "./crytpomus/cryptomus.service.mjs";
+import CronService from "./cron/cron.service.mjs";
 
 const app = express();
 const port = 3000; // Порт, на котором будет работать ваш сервер
@@ -14,6 +15,7 @@ async function startServer() {
   // await db.init();
 
   const cryptomusService = new CryptomusService(APIKey, merchantId);
+  const cronService = new CronService(cryptomusService).init();
 
   // Обработчик для корневого URL
   app.get("/payment", async (req, res) => {
@@ -32,18 +34,6 @@ async function startServer() {
     }
 
     console.log(response);
-
-    // await db.payment.create({
-    //   data: {
-    //     uuid: response.result.uuid,
-    //     orderId: response.result.order_id,
-    //     status: response.result.status,
-    //     amount: response.result.amount,
-    //     paymentAmount: response.result.paymentAmount,
-    //     isFinal: response.result.is_final,
-    //     url: response.result.url,
-    //   },
-    // });
 
     res.redirect(response.result.url);
   });
