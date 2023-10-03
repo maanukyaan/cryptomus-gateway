@@ -1,0 +1,31 @@
+.Header {
+  padding: 0 120px;
+  display: flex;
+}
+
+.yellow {
+  color: #ECC140 !important;
+}
+
+.h2 {
+  width: 759px;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 85px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.h3 {
+  margin-top: 45px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 41px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 949px;
+}
+
+.img {
+  width: 763px;
+}/*# sourceMappingURL=Header.module.css.map */
