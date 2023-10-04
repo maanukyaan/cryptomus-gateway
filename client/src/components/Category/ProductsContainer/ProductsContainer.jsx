@@ -1,8 +1,8 @@
-import style from "./ProductsContainer.module.css"
+import styles from "./ProductsContainer.module.css"
 
 function ProductsContainer( props ) {
   return (
-    <div className={style.ProductsContainer}>
+    <div className={styles.ProductsContainer}>
       {props.children}
     </div>
   )

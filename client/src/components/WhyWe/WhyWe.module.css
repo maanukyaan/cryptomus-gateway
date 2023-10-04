@@ -1,0 +1,53 @@
+.WhyWe {
+  margin: 240px 0 0 0;
+  padding: 0 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../img/WhyWe/background.png");
+  background-size: 82%;
+  background-position: right 18vh;
+  background-repeat: no-repeat;
+  height: 3000px;
+}
+
+.title {
+  color: #000;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+}
+
+.ul {
+  padding: 185px 0 0 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ul li {
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 62px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.ul li p {
+  width: 300px;
+}
+.ul li::before {
+  content: url("../../img/WhyWe/checkmark.svg");
+  display: inline-block;
+  width: 80px;
+  height: 78px;
+  margin: 0 16px 0 0;
+}/*# sourceMappingURL=WhyWe.module.css.map */

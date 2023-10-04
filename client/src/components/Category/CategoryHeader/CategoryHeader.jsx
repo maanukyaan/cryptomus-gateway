@@ -1,15 +1,15 @@
-import style from "./CategoryHeader.module.css";
+import styles from "./CategoryHeader.module.css";
 
 function CategoryHeader(props) {
   return (
-    <div className={style.CategoryHeader_container}>
-      <div className={style.CategoryHeader}>
+    <div className={styles.CategoryHeader_container}>
+      <div className={styles.CategoryHeader}>
         <img
           src={props.img}
-          className={style.facebookIcon}
+          className={styles.facebookIcon}
           alt="Facebook icon"
         />
-        <h2 className={style.h2}>{props.title}</h2>
+        <h2 className={styles.h2}>{props.title}</h2>
       </div>
     </div>
   );
