@@ -5,6 +5,8 @@ import PaymentMethods from "./components/PaymentMethods/PaymentMethods";
 import Socials from "./components/Social/Socials/Socials";
 import WhyWe from "./components/WhyWe/WhyWe";
 import FAQ from "./components/FAQ/FAQ";
+import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Socials />
       <WhyWe />
       <FAQ />
+      <Contact />
+      <Footer />
     </>
   );
 }

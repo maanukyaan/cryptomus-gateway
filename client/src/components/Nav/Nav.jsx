@@ -9,16 +9,16 @@ export default function Nav() {
         <img src={logo} alt="Logo" className={styles.logo} />
         <ul className={styles.ul}>
           <li>
-            <a href="#">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">Categories</a>
+            <a href="/">Categories</a>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="/">Blog</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="/">Contact</a>
           </li>
         </ul>
         <button className={styles.button}>EN</button>

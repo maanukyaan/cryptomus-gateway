@@ -1,0 +1,134 @@
+.Contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 120px 170px;
+}
+
+.title {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 21px;
+  background: #2B689F;
+  text-align: center;
+  width: 233px;
+}
+
+.section_1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0 0 0;
+}
+
+.section_1__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section_1__h3 {
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 84px;
+  max-width: 953px;
+}
+
+.section_1__h4 {
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  margin: 95px 0 0 0;
+}
+
+.section_2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0 0 0;
+}
+
+.section_2__h2 {
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 67px;
+  text-align: center;
+}
+
+.section_2__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.a {
+  padding: 0;
+  margin: 0 50px 0 0;
+}
+.a:last-child {
+  margin: 0;
+}
+
+.facebook_2 {
+  margin: 120px 0 0 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 90px 0 0 0;
+}
+
+.input {
+  display: inline-flex;
+  padding: 32px 438px 32px 27px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background: #DEEFFF;
+  color: #525252;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  max-width: 600px;
+  margin: 0 0 58px 0;
+  outline: none;
+}
+
+.textarea {
+  max-width: 661px;
+}
+
+.button {
+  display: inline-flex;
+  padding: 16px 69px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  background: #2B689F;
+  color: #fff;
+  width: 204px;
+}/*# sourceMappingURL=Contact.module.css.map */

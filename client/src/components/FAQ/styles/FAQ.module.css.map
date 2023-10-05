@@ -1,1 +1,1 @@
-{"version":3,"sources":["FAQ.module.sass","FAQ.module.css"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,WAAA;ACCJ;;ADCA;EACI,WAAA;EACA,kBAAA;EACA,eAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,kBAAA;ACEJ","file":"FAQ.module.css"}
+{"version":3,"sources":["FAQ.module.sass","FAQ.module.css"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,WAAA;EACA,gBAAA;ACCJ;;ADCA;EACI,WAAA;EACA,kBAAA;EACA,eAAA;EACA,kBAAA;EACA,gBAAA;EACA,mBAAA;EACA,kBAAA;ACEJ;;ADAA;EACI,oBAAA;ACGJ","file":"FAQ.module.css"}
