@@ -1,4 +1,4 @@
-import styles from "./PaymentMethods.module.css";
+import styles from "./styles/PaymentMethods.module.css";
 
 import bell from "../../img/PaymentMethods/bell.svg";
 import visa_mastercard from "../../img/PaymentMethods/visa_mastercard.svg";

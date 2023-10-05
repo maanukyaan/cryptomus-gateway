@@ -1,4 +1,4 @@
-import style from "./Header.module.css"
+import style from "./styles/Header.module.css"
 
 import facebook from "../../img/Header/facebook.svg";
 

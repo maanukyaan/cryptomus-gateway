@@ -1,5 +1,6 @@
+import styles from "./styles/Nav.module.css";
+
 import logo from "../../img/Nav/logo.svg";
-import styles from "./Nav.module.css";
 
 export default function Nav() {
   return (

@@ -1,4 +1,4 @@
-import styles from "./Socials.module.css";
+import styles from "./styles/Socials.module.css";
 
 import SocialItem from "../SocialItem/SocialItem";
 

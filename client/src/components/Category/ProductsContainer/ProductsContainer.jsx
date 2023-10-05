@@ -1,4 +1,4 @@
-import styles from "./ProductsContainer.module.css"
+import styles from "./styles/ProductsContainer.module.css"
 
 function ProductsContainer( props ) {
   return (

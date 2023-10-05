@@ -1,4 +1,4 @@
-import styles from "./SocialItem.module.css"
+import styles from "./styles/SocialItem.module.css"
 
 function SocialItem( props ) {
   return (

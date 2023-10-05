@@ -1,4 +1,4 @@
-import styles from "./CategoryHeader.module.css";
+import styles from "./styles/CategoryHeader.module.css";
 
 function CategoryHeader(props) {
   return (

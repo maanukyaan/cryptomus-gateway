@@ -1,4 +1,4 @@
-import styles from "./WhyWe.module.css"
+import styles from "./styles/WhyWe.module.css"
 
 import Li from "./Li";
 

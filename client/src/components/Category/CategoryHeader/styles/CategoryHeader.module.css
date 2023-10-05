@@ -7,7 +7,7 @@
 .CategoryHeader {
   width: 100%;
   height: 276px;
-  background-image: url("../../../img/CategoryHeader/background.png");
+  background-image: url("../../../../img/CategoryHeader/background.png");
   background-size: cover;
   border-radius: 43px;
   display: flex;
