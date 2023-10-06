@@ -1,4 +1,4 @@
-import style from "./styles/Header.module.css"
+import style from "./styles/Header.module.css";
 
 import facebook from "../../img/Header/facebook.svg";
 
@@ -7,14 +7,14 @@ function Header() {
     <div className={style.Header}>
       <div className={style.left}>
         <h2 className={style.h2}>
-          Buy <span className={style.yellow}>FACEBOOK ADS</span> Accounts and 
-          <span className={style.yellow}> BUSINESS MANAGERS</span> to facilitate your
-          advertising efforts!
+          Manually created <br />
+          <span className={style.yellow}> Facebook Ads Accounts </span> <br />
+          for your needs
         </h2>
         <h3 className={style.h3}>
-          We offer the ultimate destination for acquiring Facebook Ads Accounts
-          and Business Managers, backed by a 100% guarantee for successful
-          advertising.
+          Are you looking for a Facebook Ads account to run your campaigns on
+          Facebook? We can provide you a fully working Facebook Ads Account,
+          Business Manager and Fan Page.
         </h3>
       </div>
       <div className={style.right}>

@@ -1,0 +1,27 @@
+import styles from "./styles/Categories.module.css";
+
+import CategoryItem from "./CategoryItem/CategoryItem";
+
+import facebookAccounts from "../../img/Categories/facebook_accounts.svg";
+import businessManager from "../../img/Categories/business_manager.svg";
+import fanPages from "../../img/Categories/fan_pages.svg";
+
+function Categories() {
+  return (
+    <div className={styles.Categories}>
+      <CategoryItem
+        title="Facebook Accounts"
+        img={facebookAccounts}
+        link="facebook_accounts"
+      />
+      <CategoryItem
+        title="Business Manager"
+        img={businessManager}
+        link="business_manager"
+      />
+      <CategoryItem title="Fan Pages" img={fanPages} link="fan_pages" />
+    </div>
+  );
+}
+
+export default Categories;
