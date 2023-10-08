@@ -57,6 +57,27 @@ const Product = sequelize.define("Product", {
   },
 });
 
+const User = sequelize.define("User", {
+  user_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
 // Определение отношений между моделями
 Category.hasMany(Subcategory, {
   foreignKey: "category_id",
@@ -81,9 +102,31 @@ Product.belongsTo(Subsubcategory, {
   as: "subsubcategory",
 });
 
+// Добавление связей для отслеживания пользователя, создавшего или изменившего запись
+// Category.belongsTo(User, {
+//   foreignKey: "createdBy", // Поле, которое будет хранить идентификатор пользователя, создавшего категорию
+//   as: "admin",
+// });
+
+// Subcategory.belongsTo(User, {
+//   foreignKey: "createdBy",
+//   as: "admin",
+// });
+
+// Subsubcategory.belongsTo(User, {
+//   foreignKey: "createdBy",
+//   as: "admin",
+// });
+
+// Product.belongsTo(User, {
+//   foreignKey: "createdBy",
+//   as: "admin",
+// });
+
 module.exports = {
   Category,
   Subcategory,
   Subsubcategory,
   Product,
+  User,
 };
