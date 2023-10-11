@@ -20,6 +20,9 @@ const Subcategory = sequelize.define("Subcategory", {
     primaryKey: true,
     autoIncrement: true,
   },
+  category_id: {
+    type: DataTypes.INTEGER,
+  },
   subcategory_name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -32,15 +35,21 @@ const Subsubcategory = sequelize.define("Subsubcategory", {
     primaryKey: true,
     autoIncrement: true,
   },
+  subcategory_id: {
+    type: DataTypes.INTEGER,
+  },
   subsubcategory_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   price: {
-    type: DataTypes.INTEGER, // Пример для цены с двумя знаками после запятой
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  description: {
+  card_description: {
+    type: DataTypes.STRING,
+  },
+  product_description: {
     type: DataTypes.STRING,
   },
 });
@@ -50,6 +59,9 @@ const Product = sequelize.define("Product", {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+  },
+  subsubcategory_id: {
+    type: DataTypes.INTEGER,
   },
   product_name: {
     type: DataTypes.STRING,
@@ -93,6 +105,10 @@ Subsubcategory.hasMany(Product, {
 });
 
 // Определение обратных отношений
+Subcategory.belongsTo(Category, {
+  foreignKey: "category_id",
+  as: "category",
+});
 Subsubcategory.belongsTo(Subcategory, {
   foreignKey: "subcategory_id",
   as: "subcategory",
@@ -101,27 +117,6 @@ Product.belongsTo(Subsubcategory, {
   foreignKey: "subsubcategory_id",
   as: "subsubcategory",
 });
-
-// Добавление связей для отслеживания пользователя, создавшего или изменившего запись
-// Category.belongsTo(User, {
-//   foreignKey: "createdBy", // Поле, которое будет хранить идентификатор пользователя, создавшего категорию
-//   as: "admin",
-// });
-
-// Subcategory.belongsTo(User, {
-//   foreignKey: "createdBy",
-//   as: "admin",
-// });
-
-// Subsubcategory.belongsTo(User, {
-//   foreignKey: "createdBy",
-//   as: "admin",
-// });
-
-// Product.belongsTo(User, {
-//   foreignKey: "createdBy",
-//   as: "admin",
-// });
 
 module.exports = {
   Category,

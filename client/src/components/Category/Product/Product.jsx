@@ -1,5 +1,7 @@
 import styles from "./styles/Product.module.css";
 
+import { NavLink } from "react-router-dom";
+
 function Product(props) {
   return (
     <div className={styles.Product}>
@@ -19,9 +21,12 @@ function Product(props) {
         <p className={styles.description}>{props.description}</p>
         <img src={props.img} alt="Icon" className={styles.img} />
       </div>
-      <a href={props.link} className={styles.a}>
+      <NavLink
+        to={`${window.location.href}/${props.link}`}
+        className={styles.a}
+      >
         MORE
-      </a>
+      </NavLink>
     </div>
   );
 }

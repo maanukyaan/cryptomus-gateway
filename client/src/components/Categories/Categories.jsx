@@ -12,14 +12,14 @@ function Categories() {
       <CategoryItem
         title="Facebook Accounts"
         img={facebookAccounts}
-        link="facebook_accounts"
+        link="category/facebook_accounts"
       />
       <CategoryItem
         title="Business Manager"
         img={businessManager}
-        link="business_manager"
+        link="category/business_manager"
       />
-      <CategoryItem title="Fan Pages" img={fanPages} link="fan_pages" />
+      <CategoryItem title="Fan Pages" img={fanPages} link="category/fan_pages" />
     </div>
   );
 }

@@ -3,7 +3,7 @@ const router = new Router();
 
 const subsubcategoryController = require("../controllers/subsubcategoryController");
 
-router.post("/crate", subsubcategoryController.crate);
+router.post("/create", subsubcategoryController.create);
 router.get("/getAll", subsubcategoryController.getAll);
 
 module.exports = router;
