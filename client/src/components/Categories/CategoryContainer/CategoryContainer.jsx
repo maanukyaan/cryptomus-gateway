@@ -10,6 +10,8 @@ import facebookAccounts from "../../../img/Product/facebook_accounts.svg";
 import businessManager from "../../../img/Categories/business_manager.svg";
 import fanPages from "../../../img/Categories/fan_pages.svg";
 
+import Loader from "../../Loader/Loader";
+
 export default function CategoryContainer() {
   const { categoryName } = useParams();
   const [categoryData, setCategoryData] = useState(null);
@@ -43,7 +45,7 @@ export default function CategoryContainer() {
             />
           ))
         ) : (
-          <p>Loading...</p>
+          <Loader />
         )}
       </ProductsContainer>
     </div>

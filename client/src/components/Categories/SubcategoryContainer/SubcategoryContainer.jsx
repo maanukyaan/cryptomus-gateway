@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styles from "./styles/SubcategoryContainer.module.css";
 
 import facebook_img from "../../../img/Subcategory/facebook.svg";
+import Loader from "../../Loader/Loader";
 
 function StringToList({ data }) {
   // Разбиваем строку на строки, используя переводы строк
@@ -54,7 +55,7 @@ function SubcategoryContainer() {
           </div>
         ))
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
     </div>
   );

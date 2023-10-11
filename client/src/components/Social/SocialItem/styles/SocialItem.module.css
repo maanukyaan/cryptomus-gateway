@@ -1,8 +1,8 @@
 .SocialItem {
   display: flex;
   align-items: center;
-  width: 30%;
-  height: 195px;
+  width: 31%;
+  height: 155px;
   border-radius: 40px;
   background: #DDEFFF;
   position: relative;
@@ -11,16 +11,17 @@
 .title {
   color: #000;
   font-family: Inter;
-  font-size: 24px;
+  font-size: 19px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   margin: 0 0 0 13px;
+  white-space: nowrap;
 }
 
 .img {
   position: relative;
-  left: -10px;
-  bottom: -5px;
-  height: 228px;
+  left: -20px;
+  bottom: -3px;
+  height: 180px;
 }/*# sourceMappingURL=SocialItem.module.css.map */

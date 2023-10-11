@@ -18,8 +18,8 @@ function Contact() {
         </div>
         <div className={styles.section_1__right}>
           <h3 className={styles.section_1__h3}>
-            We are open Everyday. Get updates and{" "}
-            <span style={{ color: "#ECC140" }}>special offers!</span>
+            We are open everyday. <br /> Get updates and
+            <span style={{ color: "#ECC140" }}> special offers!</span>
           </h3>
           <h4 className={styles.section_1__h4}>
             Join us to keep up to date with our news and promotions

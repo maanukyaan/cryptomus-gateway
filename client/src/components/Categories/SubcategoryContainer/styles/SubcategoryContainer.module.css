@@ -9,6 +9,7 @@
 .SubcategoryItem {
   width: 49%;
   max-width: 825px;
+  min-height: 445px;
   margin: 25px 0;
   padding: 38px;
   border-radius: 46px;
@@ -27,11 +28,22 @@
   flex-direction: column;
   align-items: center;
 }
+@media screen and (max-width: 1870px) {
+  .left {
+    min-width: 25%;
+  }
+}
 
 .right {
   margin: 0 0 0 88px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1870px) {
+  .right {
+    margin-left: 30px;
+  }
 }
 
 .title {
@@ -41,6 +53,12 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+@media screen and (max-width: 1870px) {
+  .title {
+    font-size: 25px;
+    max-width: 350px;
+  }
 }
 
 .price {
@@ -65,8 +83,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 435px;
-  max-width: 435px;
   padding: 10px 0;
   display: flex;
   align-items: center;

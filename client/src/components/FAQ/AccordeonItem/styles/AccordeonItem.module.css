@@ -4,6 +4,7 @@
   width: 100%;
   padding: 50px 0;
   border-bottom: 1px solid #524F4F;
+  cursor: pointer;
 }
 
 .left {
@@ -20,7 +21,7 @@
 .title {
   color: #000;
   font-family: Inter;
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -29,9 +30,10 @@
 .text {
   color: #5e5e5e;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   margin: 30px 0 0 0;
+  width: 70%;
 }/*# sourceMappingURL=AccordeonItem.module.css.map */

@@ -1,1 +1,5 @@
-/*# sourceMappingURL=CategoryContainer.module.css.map */
+.CategoryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=CategoryContainer.module.css.map */

@@ -1,5 +1,5 @@
 .Product {
-  width: 30%;
+  width: 31%;
   margin: 0 0 72px 0;
   display: flex;
   flex-direction: column;
@@ -13,6 +13,9 @@
   padding: 35px;
   position: relative;
   min-height: 386px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .title {
@@ -22,6 +25,16 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+@media screen and (max-width: 1640px) {
+  .title {
+    font-size: 29px;
+  }
+}
+@media screen and (max-width: 1640px) {
+  .title {
+    font-size: 25px;
+  }
 }
 
 .description {
@@ -39,6 +52,18 @@
   position: absolute;
   bottom: 3px;
   right: 3px;
+  width: 172px;
+  height: auto;
+}
+@media screen and (max-width: 1640px) {
+  .img {
+    width: 140px;
+  }
+}
+@media screen and (max-width: 1322px) {
+  .img {
+    width: 100px;
+  }
 }
 
 .a {
