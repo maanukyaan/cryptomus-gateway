@@ -7,20 +7,19 @@ import Product from "./../../Category/Product/Product";
 import ProductsContainer from "./../../Category/ProductsContainer/ProductsContainer";
 
 import facebookAccounts from "../../../img/Product/facebook_accounts.svg";
-import businessManager from "../../../img/Categories/business_manager.svg";
-import fanPages from "../../../img/Categories/fan_pages.svg";
 
 import Loader from "../../Loader/Loader";
 
 export default function CategoryContainer() {
   const { categoryName } = useParams();
-  const [categoryData, setCategoryData] = useState(null);
+  const [categoryData, setCategoryData] = useState([]);
 
   const fetchData = async (link) => {
     try {
       const response = await axios.get(
-        `http://localhost:5555/api/getCategories/${link}`
+        `http://localhost:5000/api/getCategories/${link}`
       );
+      console.log(response.data);
       setCategoryData(response.data);
     } catch (error) {
       console.error("Ошибка при запросе на бэкенд", error);

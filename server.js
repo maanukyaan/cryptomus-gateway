@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const path = require("path");
 
 const PORT = process.env.SERVER_PORT || 7777;
 
@@ -25,8 +26,14 @@ async function run() {
         : console.log(`\nServer succesfully started on port ${PORT}\n`);
     });
 
+    app.use(express.static("client/build"));
+
     app.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Разрешить доступ с порта 3000
+      const allowedOrigins = ["http://localhost:3000"]; // Список разрешенных IP-адресов
+      const origin = req.headers.origin;
+      if (allowedOrigins.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+      }
       res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
       res.header("Access-Control-Allow-Headers", "Content-Type");
       next();
@@ -36,9 +43,7 @@ async function run() {
     await client.connect();
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!\n"
-    );
+    console.log("Successfully connected to MongoDB!\n");
 
     app.get("/api/getCategories/:category", async (req, res) => {
       const { category } = req.params;
@@ -116,6 +121,10 @@ async function run() {
         console.error("Error handling request:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
+    });
+
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
     });
   } catch (err) {
     console.error("MongoDB connection error:", err);

@@ -9,11 +9,17 @@ import SubcategoryContainer from "./components/Categories/SubcategoryContainer/S
 function App() {
   return (
     <>
-      <Routes> 
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Categories />} />
-          <Route path="/category/:categoryName" element={<CategoryContainer />} />
-          <Route path="/category/:categoryName/:subcategoryName" element={<SubcategoryContainer />} />
+          <Route
+            path="/category/:categoryName"
+            element={<CategoryContainer />}
+          />
+          <Route
+            path="/category/:categoryName/:subcategoryName"
+            element={<SubcategoryContainer />}
+          />
           <Route path="/assortment" element={<Assortment />} />
         </Route>
       </Routes>
