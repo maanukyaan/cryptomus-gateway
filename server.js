@@ -29,7 +29,11 @@ async function run() {
     app.use(express.static("client/build"));
 
     app.use((req, res, next) => {
-      const allowedOrigins = ["http://localhost:3000"]; // Список разрешенных IP-адресов
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "https://154.7.253.78",
+        "https://valgoshop.com",
+      ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
         res.setHeader("Access-Control-Allow-Origin", origin);

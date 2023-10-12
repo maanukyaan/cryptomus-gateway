@@ -20,13 +20,13 @@ function Product(props) {
         )}
         <p className={styles.description}>{props.description}</p>
         <img src={props.img} alt="Icon" className={styles.img} />
+        <NavLink
+          to={`${window.location.href}/${props.link}`}
+          className={styles.a}
+        >
+          MORE
+        </NavLink>
       </div>
-      <NavLink
-        to={`${window.location.href}/${props.link}`}
-        className={styles.a}
-      >
-        MORE
-      </NavLink>
     </div>
   );
 }
