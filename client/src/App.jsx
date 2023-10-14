@@ -6,6 +6,7 @@ import Assortment from "./components/Assortment/Assortment";
 import CategoryContainer from "./components/Categories/CategoryContainer/CategoryContainer";
 import SubcategoryContainer from "./components/Categories/SubcategoryContainer/SubcategoryContainer";
 import ProductDetails from "./components/Category/Product/ProductDetails/ProductDetails";
+import Buy from "./components/Buy/Buy";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           />
           <Route path="/assortment" element={<Assortment />} />
         </Route>
+
+        <Route path="/buy/:categoryName/:subcategoryName" element={<Buy />} />
       </Routes>
     </>
   );

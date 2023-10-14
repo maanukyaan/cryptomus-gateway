@@ -1,0 +1,132 @@
+.Buy
+    width: 100%
+    height: 100%
+    min-height: 100vh
+    overflow: hidden
+    display: flex
+    justify-content: center
+    align-items: center
+
+.form
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 0 120px
+
+.container
+    display: flex
+
+.left
+    display: flex
+    flex-direction: column
+
+.right
+    padding: 0 0 0 155px
+
+.category_title
+    color: #000
+    font-family: Inter
+    font-size: 40px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+
+.product_title
+    color: #474747
+    font-family: Inter
+    font-size: 30px
+    font-style: normal
+    font-weight: 200
+    line-height: normal
+    margin: 18px 0 60px 0
+
+.input_group
+    margin: 0 0 20px 0
+    display: flex
+    flex-direction: column
+
+.input
+    border-radius: 15px
+    background: #EBEBEB
+    width: 513px
+    padding: 15px 24px
+    outline: none
+    color: #787878
+    font-family: Inter
+    font-size: 23px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+
+.counter_container
+    display: flex
+    align-items: center
+    margin: 30px 0 0 0
+
+    .counter_input
+        width: 120px
+        border-radius: 15px
+        background: #EBEBEB
+        padding: 16px 22px
+        margin: 0 55px
+        color: #787878
+        font-family: Inter
+        font-size: 23.501px
+        font-style: normal
+        font-weight: 400
+        line-height: normal
+
+    .minus, .plus
+        width: 40px
+        height: 40px
+        background: #6D7CFF
+        color: #fff
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+        color: #FFF
+        font-family: Inter
+        font-size: 23px
+        cursor: pointer
+        user-select: none
+        &.disabled
+            background: #9b9b9b
+            cursor: no-drop
+
+.price
+    color: #474747
+    font-family: Inter
+    font-size: 23px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+
+.button
+    width: 248px
+    border-radius: 31px
+    background: #6D7CFF !important
+    padding: 19px 80px
+    margin: 25px 0 0 0
+    color: #fff
+
+.error
+    color: red
+    font-weight: bold
+    font-size: 20px
+    margin: 5px 0 0 0
+    padding: 0 0 0 24px
+
+.back
+    position: absolute
+    bottom: 10%
+    left: 10%
+    font-size: 20px
+    font-weight: bold
+
+    &::after
+        content: ""
+        display: block
+        width: 100%
+        height: 3px
+        background: #000

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import styles from "./styles/ProductDetails.module.css";
 import ProductHeader from "./ProductHeader";
@@ -62,9 +62,15 @@ function ProductDetails() {
               Telegram
             </a>
           </div>
-          <a
+          <NavLink
             className={styles.link}
-            href={state.buy_link}
+            to={state.buy_link}
+            state={{
+              category_title: state.category_title,
+              product_title: state.product_title,
+              price: state.price,
+              stock: state.stock,
+            }}
             style={{
               width: 500,
               marginTop: 20,
@@ -72,7 +78,7 @@ function ProductDetails() {
             }}
           >
             Buy now
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

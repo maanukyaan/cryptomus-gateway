@@ -23,6 +23,9 @@ function Product(props) {
         <NavLink
           to={`${window.location.href}/${props.link}`}
           className={styles.a}
+          state={{
+            category_title: props.title,
+          }}
         >
           MORE
         </NavLink>
