@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
 
 const PORT = process.env.SERVER_PORT || 7777;
@@ -27,9 +28,14 @@ async function run() {
     });
 
     app.use(express.static("client/build"));
+    app.use(bodyParser.json()); // Добавление middleware для обработки JSON-данных
 
     app.use((req, res, next) => {
-      const allowedOrigins = ["http://localhost:3000"]; // Список разрешенных IP-адресов
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "https://154.7.253.78",
+        "https://valgoshop.com",
+      ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
         res.setHeader("Access-Control-Allow-Origin", origin);
@@ -115,6 +121,36 @@ async function run() {
           console.log(`Name: ${name}\nProducts count: ${products.length}`);
           products.forEach((product) => {
             console.log(product);
+          });
+        }
+      } catch (error) {
+        console.error("Error handling request:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+    });
+
+    // Обработка POST-запроса с данными от клиента
+    app.post("/api/buy", async (req, res) => {
+      // Доступ к данным из тела POST-запроса
+      const postData = req.body;
+      let data;
+      console.log(postData);
+
+      try {
+        await client.connect();
+
+        // Ваш код для выполнения запроса к MongoDB
+        data = await client
+          .db(postData.category_name)
+          .collection(postData.subcategory_name)
+          .findOne({ name: postData.product_name });
+
+        if (!data) {
+          res.status(404).json({ error: "Данные не найдены" });
+        } else {
+          // Отправка ответа обратно клиенту
+          res.status(200).json({
+            data: data.products,
           });
         }
       } catch (error) {
