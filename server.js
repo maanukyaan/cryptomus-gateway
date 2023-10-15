@@ -36,8 +36,8 @@ async function run() {
         "http://localhost:5000",
         "http://154.7.253.78:5000",
         "http://154.7.253.78",
+        "https://valgoshop.com",
         "https://accspalace.com",
-        "https://api.accspalace.com",
       ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
