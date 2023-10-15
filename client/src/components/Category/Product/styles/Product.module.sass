@@ -1,9 +1,12 @@
 .Product
     width: 31%
-    margin: 0 0 72px 0
     display: flex
     flex-direction: column
     align-items: center
+
+    @media screen and ( max-width: 1726px )
+        width: 100%
+        margin: 0 0 60px 0
 
 .ProductContainer
     border-radius: 46.755px
@@ -11,33 +14,35 @@
     box-shadow: 5px -5px 15px 0px rgba(0, 0, 0, 0.15), -5px 5px 15px 0px rgba(0, 0, 0, 0.15)
     padding: 35px
     position: relative
-    min-height: 386px
     display: flex
     flex-direction: column
-    justify-content: flex-start
+    justify-content: space-around
+    min-height: 450px
+    width: 100%
+    @media screen and ( max-width: 1726px )
+        justify-content: flex-start
 
 .title
     color: #004C8F
     font-family: Inter
-    font-size: 40px
+    font-size: 37px
     font-style: normal
     font-weight: 500
     line-height: normal
-    @media screen and ( max-width: 1640px )
-        font-size: 29px
-
-    @media screen and ( max-width: 1640px )
-        font-size: 25px
 
 .description
     color: #000
     font-family: Inter
-    font-size: 16.452px
+    font-size: 16px
     font-style: normal
     font-weight: 400
     line-height: 27.807px
     width: 222px
     margin: 35px 0 0 0
+    @media screen and ( max-width: 1726px )
+        font-size: 23px
+        width: inherit
+        margin: 40px 0 0 0
 
 .img
     position: absolute
@@ -67,3 +72,5 @@
     font-style: normal
     font-weight: 500
     line-height: normal
+    @media screen and ( max-width: 1726px )
+        margin: 80px 0 0 0

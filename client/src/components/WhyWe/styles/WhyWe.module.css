@@ -10,6 +10,11 @@
   background-repeat: no-repeat;
   height: 1050px;
 }
+@media screen and (max-width: 1077px) {
+  .WhyWe {
+    padding: 0 20px;
+  }
+}
 
 .title {
   color: #000;
@@ -19,6 +24,11 @@
   font-weight: 600;
   line-height: normal;
   text-align: center;
+}
+@media screen and (max-width: 1077px) {
+  .title {
+    font-size: 40px;
+  }
 }
 
 .ul {
@@ -48,6 +58,11 @@
   content: url("../../../img/WhyWe/checkmark.svg");
   display: inline-block;
   width: 80px;
-  height: 78px;
+  height: 80px;
   margin: 0 16px 0 0;
+}
+@media screen and (max-width: 806px) {
+  .ul li {
+    font-size: 18px;
+  }
 }/*# sourceMappingURL=WhyWe.module.css.map */

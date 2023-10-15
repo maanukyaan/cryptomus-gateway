@@ -44,8 +44,10 @@ function ProductDetails() {
         <div className={styles.right}>
           <h2 className={styles.title}>{state.title}</h2>
           <StringToList data={state.card_description} />
-          <span className={styles.price}>${state.price}</span>
-          <span className={styles.stock}>Stock: {state.stock}</span>
+          <div>
+            <span className={styles.price}>${state.price}</span>
+            <span className={styles.stock}>Stock: {state.stock}</span>
+          </div>
 
           <h4 className={styles.contact}>Contact sales team</h4>
           <div className={styles.link_container}>

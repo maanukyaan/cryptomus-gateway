@@ -5,7 +5,7 @@ import styles from "./styles/ProductDetails.module.css";
 function ProductHeader({ title }) {
   return (
     <div className={styles.ProductHeader}>
-      <div className={styles.ProductHeader_title}>{title}</div>
+      <h2 className={styles.ProductHeader_title}>{title}</h2>
     </div>
   );
 }

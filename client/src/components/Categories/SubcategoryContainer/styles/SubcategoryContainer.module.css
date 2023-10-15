@@ -5,6 +5,11 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 1246px) {
+  .SubcategoryContainer {
+    flex-direction: column;
+  }
+}
 
 .SubcategoryItem {
   width: 49%;
@@ -14,6 +19,11 @@
   border-radius: 46px;
   box-shadow: 5px -5px 15px 0px rgba(0, 0, 0, 0.15), -5px 5px 15px 0px rgba(0, 0, 0, 0.15);
   display: flex;
+}
+@media screen and (max-width: 1246px) {
+  .SubcategoryItem {
+    width: 100%;
+  }
 }
 
 .img {

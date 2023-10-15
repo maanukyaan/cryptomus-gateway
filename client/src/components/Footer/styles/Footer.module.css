@@ -5,6 +5,11 @@
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 1000px) {
+  .Footer {
+    justify-content: center;
+  }
+}
 
 .left {
   display: flex;
@@ -15,6 +20,12 @@
 .iconsContainer {
   margin: 62px 0 0 0;
   display: flex;
+}
+
+.icon {
+  width: 70px;
+  height: 70px;
+  max-width: inherit;
 }
 
 .a {
@@ -30,6 +41,11 @@
   flex-direction: column;
   justify-content: space-around;
 }
+@media screen and (max-width: 1000px) {
+  .right {
+    display: none;
+  }
+}
 
 .ul {
   display: flex;
@@ -44,6 +60,14 @@
   font-weight: 600;
   line-height: normal;
   margin: 0 0 0 80px;
+}
+@media screen and (max-width: 1356px) {
+  .ul {
+    flex-direction: column;
+  }
+  .ul li {
+    margin: 0 0 20px 0;
+  }
 }
 
 .p {

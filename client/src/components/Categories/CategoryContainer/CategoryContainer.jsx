@@ -33,7 +33,7 @@ export default function CategoryContainer() {
   return (
     <div className={styles.CategoryContainer}>
       <ProductsContainer>
-        {categoryData !== null ? (
+        {categoryData.length > 0 ? (
           categoryData.map((category) => (
             <Product
               key={category._id}

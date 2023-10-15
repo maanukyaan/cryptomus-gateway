@@ -7,6 +7,17 @@
   background: #DDEFFF;
   position: relative;
 }
+@media screen and (max-width: 1470px) {
+  .SocialItem {
+    width: 50%;
+    margin: 0 0 40px 0;
+  }
+}
+@media screen and (max-width: 1196px) {
+  .SocialItem {
+    width: 100%;
+  }
+}
 
 .title {
   color: #000;
@@ -17,6 +28,13 @@
   line-height: normal;
   margin: 0 0 0 13px;
   white-space: nowrap;
+}
+@media screen and (max-width: 1470px) {
+  .title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 .img {
