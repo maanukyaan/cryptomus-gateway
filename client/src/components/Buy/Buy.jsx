@@ -26,9 +26,11 @@ function Buy() {
   const onSubmit = (data) => {
     Swal.fire({
       icon: "success",
-      title: "You will now be redirected to the payment page",
+      title:
+        "You will now be redirected to the payment page. <br />Please, wait...",
       showConfirmButton: false,
-      timer: 5000,
+      timer: 10000,
+      width: "90%",
     });
 
     const formData = {

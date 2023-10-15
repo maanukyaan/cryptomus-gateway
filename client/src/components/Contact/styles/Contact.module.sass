@@ -3,6 +3,8 @@
     flex-direction: column
     align-items: center
     padding: 40px 120px 170px
+    @media screen and ( max-width: 956px )
+        padding: 40px 40px 170px
 
 .title
     color: #FFF
@@ -21,12 +23,24 @@
     display: flex
     justify-content: space-between
     margin: 50px 0 0 0
+    @media screen and ( max-width: 1393px )
+        flex-direction: column
+        align-items: center
+        justify-content: center
+
+.section_1__left
+    order: 1
+    @media screen and ( max-width: 1393px )
+        order: 2
 
 .section_1__right
     display: flex
     flex-direction: column
     justify-content: center
     margin: 0 0 0 20px
+    order: 2
+    @media screen and ( max-width: 1393px )
+        order: 1
 
 .section_1__h3
     color: #000
@@ -37,6 +51,12 @@
     font-weight: 700
     line-height: 64px
     white-space: nowrap
+    @media screen and ( max-width: 1393px )
+        text-align: center
+
+    @media screen and ( max-width: 780px )
+        font-size: 30px
+        line-height: inherit
 
 .section_1__h4
     color: #000
@@ -47,12 +67,22 @@
     font-weight: 400
     line-height: 40px
     margin: 25px 0 0 0
+    @media screen and ( max-width: 780px )
+        font-size: 18px
 
 .section_2
     width: 100%
     display: flex
     justify-content: space-between
     margin: 80px 0 0 0
+
+    @media screen and ( max-width: 1393px )
+        flex-direction: column
+
+.section_2__left
+    width: 50%
+    @media screen and ( max-width: 1393px )
+        width: inherit
 
 .section_2__h2
     color: #000
@@ -64,14 +94,13 @@
     line-height: 67px
     text-align: center
 
-.section_2__left
-    width: 50%
-
 .section_2__right
     display: flex
     flex-direction: column
     justify-content: space-evenly
     align-items: flex-end
+    @media screen and ( max-width: 1393px )
+        display: none
 
 .iconsContainer
     display: flex
@@ -115,6 +144,8 @@
     justify-content: center
     align-items: center
     border-radius: 22px
-    background: #2B689F
+    background: #2B689F !important
     color: #fff
     width: 204px
+    @media screen and ( max-width: 1393px )
+        margin: 0 auto

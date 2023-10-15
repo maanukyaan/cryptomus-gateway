@@ -3,6 +3,14 @@
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 1163px) {
+  .Header {
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 .yellow {
   color: #ECC140 !important;
@@ -10,6 +18,12 @@
 
 .left {
   width: 60%;
+}
+@media screen and (max-width: 1163px) {
+  .left {
+    width: inherit;
+    padding: 0 40px;
+  }
 }
 
 .h2 {
@@ -20,6 +34,12 @@
   text-align: left;
   color: #454545;
 }
+@media screen and (max-width: 1163px) {
+  .h2 {
+    text-align: center;
+    font-size: 65px;
+  }
+}
 
 .h3 {
   margin-top: 45px;
@@ -29,6 +49,12 @@
   letter-spacing: 0em;
   text-align: left;
   color: #454545;
+}
+@media screen and (max-width: 1163px) {
+  .h3 {
+    margin: 45px 0;
+    text-align: center;
+  }
 }
 
 .img {

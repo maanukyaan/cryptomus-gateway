@@ -5,4 +5,9 @@
   align-items: center;
   justify-content: space-between;
   margin: 183px 0 0 0;
+}
+@media screen and (max-width: 1470px) {
+  .Socials {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=Socials.module.css.map */

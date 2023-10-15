@@ -9,7 +9,6 @@ import Socials from "../Social/Socials/Socials";
 import WhyWe from "../WhyWe/WhyWe";
 import FAQ from "../FAQ/FAQ";
 import Contact from "../Contact/Contact";
-import ScrollToTop from "./../ScrollToTop/ScrollToTop";
 
 function Layout() {
   return (
