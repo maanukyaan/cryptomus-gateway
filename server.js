@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
 
 const PORT = process.env.SERVER_PORT || 7777;
 
@@ -160,10 +159,6 @@ async function run() {
         console.error("Error handling request:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
-    });
-
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
     });
   } catch (err) {
     console.error("MongoDB connection error:", err);
