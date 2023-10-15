@@ -35,6 +35,7 @@ async function run() {
         "http://localhost:3000",
         "http://localhost:5000",
         "http://154.7.253.78:5000",
+        "http://154.7.253.78",
         "https://valgoshop.com",
         "https://accspalace.com",
       ]; // Список разрешенных IP-адресов
