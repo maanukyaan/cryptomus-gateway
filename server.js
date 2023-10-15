@@ -33,8 +33,11 @@ async function run() {
     app.use((req, res, next) => {
       const allowedOrigins = [
         "http://localhost:3000",
-        "https://154.7.253.78",
-        "https://valgoshop.com",
+        "http://localhost:5000",
+        "http://154.7.253.78:5000",
+        "http://154.7.253.78",
+        "https://accspalace.com",
+        "https://api.accspalace.com",
       ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
