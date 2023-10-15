@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
 
 const PORT = process.env.SERVER_PORT || 7777;
 
@@ -36,8 +35,8 @@ async function run() {
         "http://localhost:5000",
         "http://154.7.253.78:5000",
         "http://154.7.253.78",
+        "https://valgoshop.com",
         "https://accspalace.com",
-        "https://api.accspalace.com",
       ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
@@ -160,10 +159,6 @@ async function run() {
         console.error("Error handling request:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
-    });
-
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
     });
   } catch (err) {
     console.error("MongoDB connection error:", err);
