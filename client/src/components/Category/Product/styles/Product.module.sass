@@ -9,7 +9,7 @@
         margin: 0 0 60px 0
 
 .ProductContainer
-    border-radius: 46.755px
+    border-radius: 46px
     background: #FFF
     box-shadow: 5px -5px 15px 0px rgba(0, 0, 0, 0.15), -5px 5px 15px 0px rgba(0, 0, 0, 0.15)
     padding: 35px
@@ -22,6 +22,10 @@
     @media screen and ( max-width: 1726px )
         justify-content: flex-start
 
+    @media screen and ( max-width: 777px )
+        font-size: 20px
+        justify-content: space-between
+
 .title
     color: #004C8F
     font-family: Inter
@@ -29,6 +33,8 @@
     font-style: normal
     font-weight: 500
     line-height: normal
+    @media screen and ( max-width: 777px )
+        font-size: 25px
 
 .description
     color: #000
@@ -43,6 +49,9 @@
         font-size: 23px
         width: inherit
         margin: 40px 0 0 0
+
+    @media screen and ( max-width: 777px )
+        font-size: 20px
 
 .img
     position: absolute
@@ -74,3 +83,6 @@
     line-height: normal
     @media screen and ( max-width: 1726px )
         margin: 80px 0 0 0
+
+    @media screen and ( max-width: 463px )
+        margin: 40px 0 0 0

@@ -8,11 +8,17 @@
     position: relative
 
     @media screen and ( max-width: 1470px )
-        width: 50%
-        margin: 0 0 40px 0
+        height: 90px
 
     @media screen and ( max-width: 1196px )
         width: 100%
+        margin: 0 0 40px 0
+
+    @media screen and ( max-width: 660px )
+        width: 70%
+
+    @media screen and ( max-width: 500px )
+        width: 85%
 
 .title
     color: #000
@@ -23,13 +29,21 @@
     line-height: normal
     margin: 0 0 0 13px
     white-space: nowrap
-    @media screen and ( max-width: 1470px )
-        font-size: 25px
-        font-weight: bold
+    @media screen and ( max-width: 1196px )
         text-align: center
+        font-weight: bold
+
+    @media screen and ( max-width: 500px )
+        margin: 0
+        font-size: 13px
 
 .img
     position: relative
     left: -20px
     bottom: -3px
     height: 180px
+    @media screen and ( max-width: 1470px )
+        height: 100px
+
+    @media screen and ( max-width: 500px )
+        bottom: 0

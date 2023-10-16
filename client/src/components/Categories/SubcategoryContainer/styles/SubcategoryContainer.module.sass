@@ -4,8 +4,12 @@
     align-items: center
     justify-content: space-between
     flex-wrap: wrap
+
     @media screen and ( max-width: 1246px )
         flex-direction: column
+
+    @media screen and ( max-width: 671px )
+        padding: 50px 30px
 
 .SubcategoryItem
     width: 49%
@@ -18,6 +22,10 @@
 
     @media screen and ( max-width: 1246px )
         width: 100%
+
+    @media screen and ( max-width: 500px )
+        flex-direction: column
+
 .img
     width: 165px
     height: 165px
@@ -30,6 +38,9 @@
     @media screen and ( max-width: 1870px )
         min-width: 25%
 
+    @media screen and ( max-width: 500px )
+        margin: 0 0 30px 0
+
 .right
     margin: 0 0 0 88px
     display: flex
@@ -37,6 +48,11 @@
     justify-content: space-between
     @media screen and ( max-width: 1870px )
         margin-left: 30px
+
+    @media screen and ( max-width: 500px )
+        margin: 0
+        justify-content: center
+        align-items: center
 
 .title
     color: #000
@@ -49,6 +65,10 @@
         font-size: 25px
         max-width: 350px
 
+    @media screen and ( max-width: 671px )
+        font-size: 20px
+        text-align: justify
+
 .price
     color: #ECC140
     font-family: Inter
@@ -58,6 +78,8 @@
     line-height: normal
     text-align: center
     margin: 40px 0 0 0
+    @media screen and ( max-width: 671px )
+        font-size: 30px
 
 .ul
     margin: 20px 0 0 0
@@ -79,6 +101,9 @@
             margin: 0 10px 0 0
             padding: 0
 
+        @media screen and ( max-width: 671px )
+            font-size: 16px
+
 .link_container
     display: flex
     margin: 27px 0 0 0
@@ -96,3 +121,11 @@
 
         &:first-child
             margin: 0 18px 0 0
+
+    @media screen and ( max-width: 671px )
+        flex-direction: column
+        .link
+            width: 200px
+            text-align: center
+            &:first-child
+                margin: 0 0 20px 0

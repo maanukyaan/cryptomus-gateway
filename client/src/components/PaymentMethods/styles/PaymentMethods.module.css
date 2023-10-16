@@ -84,6 +84,15 @@
     margin: 30px 0 0 0;
   }
 }
+@media screen and (max-width: 759px) {
+  .methods {
+    flex-direction: column;
+  }
+  .methods img {
+    width: 40% !important;
+    margin: 0;
+  }
+}
 
 .img {
   width: 21%;
