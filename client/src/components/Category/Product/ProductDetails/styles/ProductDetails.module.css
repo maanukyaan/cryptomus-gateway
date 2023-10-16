@@ -29,6 +29,12 @@
     font-size: 25px;
   }
 }
+@media screen and (max-width: 572px) {
+  .ProductHeader_title {
+    font-size: 22px;
+    padding: 0 20px;
+  }
+}
 
 .container {
   width: 100%;
@@ -39,6 +45,11 @@
 @media screen and (max-width: 1661px) {
   .container {
     flex-direction: column;
+  }
+}
+@media screen and (max-width: 572px) {
+  .container {
+    padding: 70px 30px;
   }
 }
 
@@ -101,6 +112,11 @@
     max-width: inherit;
   }
 }
+@media screen and (max-width: 548px) {
+  .features_container {
+    padding: 45px;
+  }
+}
 
 .features_title {
   color: #000;
@@ -130,6 +146,11 @@
   margin: 0 10px 0 0;
   padding: 0;
 }
+@media screen and (max-width: 548px) {
+  .ul {
+    margin: 30px 0 0 0;
+  }
+}
 
 .title {
   color: #000;
@@ -144,29 +165,33 @@
     text-align: center;
   }
 }
+@media screen and (max-width: 548px) {
+  .title {
+    font-size: 22px;
+  }
+}
 
-.price {
+.price, .stock {
   color: #EDCB62;
   font-family: Inter;
   font-size: 50px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+@media screen and (max-width: 548px) {
+  .price, .stock {
+    font-size: 28px;
+  }
+}
+
+.price {
   margin: 0 160px 0 0;
 }
 @media screen and (max-width: 1661px) {
   .price {
     margin: 0 40px 0 0;
   }
-}
-
-.stock {
-  color: #EDCB62;
-  font-family: Inter;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
 }
 
 .contact {
@@ -178,10 +203,21 @@
   line-height: normal;
   margin: 60px 0 0 0;
 }
+@media screen and (max-width: 548px) {
+  .contact {
+    font-size: 30px;
+  }
+}
 
 .link_container {
   display: flex;
   margin: 27px 0 0 0;
+}
+@media screen and (max-width: 548px) {
+  .link_container {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .link {
@@ -199,4 +235,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 548px) {
+  .link {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+  .link:nth-child(2) {
+    margin: 0 !important;
+  }
 }/*# sourceMappingURL=ProductDetails.module.css.map */

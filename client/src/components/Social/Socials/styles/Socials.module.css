@@ -6,8 +6,14 @@
   justify-content: space-between;
   margin: 183px 0 0 0;
 }
-@media screen and (max-width: 1470px) {
+@media screen and (max-width: 1196px) {
   .Socials {
     flex-direction: column;
+  }
+}
+@media screen and (max-width: 660px) {
+  .Socials {
+    align-items: center;
+    padding: 0 20px;
   }
 }/*# sourceMappingURL=Socials.module.css.map */

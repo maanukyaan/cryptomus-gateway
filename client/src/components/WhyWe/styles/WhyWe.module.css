@@ -65,4 +65,9 @@
   .ul li {
     font-size: 18px;
   }
+}
+@media screen and (max-width: 600px) {
+  .ul li {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=WhyWe.module.css.map */
