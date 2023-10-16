@@ -1,4 +1,5 @@
 require("dotenv").config();
+const config = require("platformsh-config").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -20,10 +21,10 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    app.listen(PORT, (err) => {
+    app.listen(config.port, (err) => {
       err
         ? console.log(err)
-        : console.log(`\nServer succesfully started on port ${PORT}\n`);
+        : console.log(`\nServer succesfully started on port ${config.port}\n`);
     });
 
     app.use(express.static("client/build"));
