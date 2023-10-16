@@ -1,23 +1,18 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function ScrollToTop() {
-  const navigate = useNavigate();
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    return navigate((location) => {
-      // Идентификатор элемента, к которому вы хотите прокрутить страницу
-      const element = document.getElementById("content");
-
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-
-      return location;
-    });
-  }, [navigate]);
+    const container = document.getElementById("content");
+    
+    if (container) {
+      container.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return null;
 }
-
-export default ScrollToTop;

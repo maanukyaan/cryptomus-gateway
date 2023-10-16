@@ -17,7 +17,7 @@ export default function CategoryContainer() {
   const fetchData = async (link) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/getCategories/${link}`
+        `https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/getCategories/${link}`
       );
       console.log(response.data);
       setCategoryData(response.data);

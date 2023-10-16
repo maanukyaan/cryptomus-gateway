@@ -46,7 +46,7 @@ function Footer() {
               </li>
             </ul>
           </nav>
-          <p className={styles.p}>Copyright © 2023 VALGO.SHOP</p>
+          <p className={styles.p}>Copyright © 2023 ACCSPALACE.COM</p>
         </div>
       </div>
       <ManukyanWeb />

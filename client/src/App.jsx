@@ -7,10 +7,17 @@ import CategoryContainer from "./components/Categories/CategoryContainer/Categor
 import SubcategoryContainer from "./components/Categories/SubcategoryContainer/SubcategoryContainer";
 import ProductDetails from "./components/Category/Product/ProductDetails/ProductDetails";
 import Buy from "./components/Buy/Buy";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+      <div>
+        <Toaster />
+      </div>
+
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Categories />} />

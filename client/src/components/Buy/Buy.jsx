@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 import styles from "./styles/Buy.module.css";
 
@@ -24,14 +25,21 @@ function Buy() {
   } = useForm();
 
   const onSubmit = (data) => {
-    Swal.fire({
-      icon: "success",
-      title:
-        "You will now be redirected to the payment page. <br />Please, wait...",
-      showConfirmButton: false,
-      timer: 10000,
-      width: "90%",
-    });
+    toast.success(
+      "You will now be redirected to the payment page. Please, wait...",
+      {
+        position: "top-center",
+        duration: 10000
+      }
+    );
+    // Swal.fire({
+    //   icon: "success",
+    //   title:
+    //     "You will now be redirected to the payment page. <br />Please, wait...",
+    //   showConfirmButton: false,
+    //   timer: 10000,
+    //   width: "90%",
+    // });
 
     const formData = {
       price: count * state.price,
@@ -45,7 +53,7 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
-    const backendUrl = "http://localhost:5000/api/buy";
+    const backendUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/buy";
 
     // Отправьте POST-запрос на бэкенд
     fetch(backendUrl, {

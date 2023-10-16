@@ -24,7 +24,7 @@ function SubcategoryContainer() {
   const { categoryName, subcategoryName } = useParams();
   const [categoryData, setCategoryData] = useState(null);
 
-  const baseUrl = "http://localhost:5000/api/getSubcategories"; // Базовый URL для запросов к бэкенду
+  const baseUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/getSubcategories"; // Базовый URL для запросов к бэкенду
   const fullUrl = `${baseUrl}/${categoryName}/${subcategoryName}`;
 
   const fetchData = async (link) => {
