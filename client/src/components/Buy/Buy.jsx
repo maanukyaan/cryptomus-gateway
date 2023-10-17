@@ -53,7 +53,8 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
-    const backendUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/buy";
+    // const backendUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/buy";
+    const backendUrl = "http://localhost:5000/api/buy";
 
     // Отправьте POST-запрос на бэкенд
     fetch(backendUrl, {
@@ -71,7 +72,7 @@ function Buy() {
       })
       .then((responseData) => {
         // Обработка успешного ответа от бэкенда
-        console.log(responseData);
+        console.log("Server responded!");
       })
       .catch((error) => {
         // Обработка ошибки
