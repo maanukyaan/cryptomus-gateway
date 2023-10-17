@@ -4,13 +4,7 @@ const config = require("platformsh-config").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 
-import CryptomusService from "./crytpomus/cryptomus.service.mjs";
-import CronService from "./cron/cron.service.mjs";
-const APIKey =
-  "G3r3iagshze48CS24pKLwF7OGjz6bCmOgrSZsp4Klp0wkZuoNOZduYDjdBOeNX9CyEwMgaR4wEhDhxwZYZR7KuQvJJJKntOpRFed0H07imaJCzcY31h8oTy400q3V4q0";
-const merchantId = "f8396565-16a1-4bf2-b47c-0cae09817b23";
-
-// const PORT = process.env.SERVER_PORT || 7777;
+const PORT = process.env.SERVER_PORT || 7777;
 
 const app = express();
 
@@ -60,9 +54,6 @@ async function run() {
     await client.db("admin").command({ ping: 1 });
     console.log("Successfully connected to MongoDB!\n");
 
-    const cryptomusService = new CryptomusService(APIKey, merchantId);
-    const cronService = new CronService(cryptomusService).init();
-
     app.get("/api/getCategories/:category", async (req, res) => {
       const { category } = req.params;
 
@@ -111,35 +102,35 @@ async function run() {
       }
     });
 
-    // app.get("/api/:category/:collection/:id", async (req, res) => {
-    //   const { category, collection, id } = req.params;
+    app.get("/api/:category/:collection/:id", async (req, res) => {
+      const { category, collection, id } = req.params;
 
-    //   try {
-    //     await client.connect();
+      try {
+        await client.connect();
 
-    //     // Ваш код для выполнения запроса к MongoDB
-    //     const data = await client
-    //       .db(category)
-    //       .collection(collection)
-    //       .find({ id: Number(id) })
-    //       .toArray();
+        // Ваш код для выполнения запроса к MongoDB
+        const data = await client
+          .db(category)
+          .collection(collection)
+          .find({ id: Number(id) })
+          .toArray();
 
-    //     if (data.length === 0) {
-    //       res.status(404).json({ error: "Данные не найдены" });
-    //     } else {
-    //       res.status(200).json(data[0]);
-    //       let name = data[0].name;
-    //       products = data[0].products;
-    //       console.log(`Name: ${name}\nProducts count: ${products.length}`);
-    //       products.forEach((product) => {
-    //         console.log(product);
-    //       });
-    //     }
-    //   } catch (error) {
-    //     console.error("Error handling request:", error);
-    //     res.status(500).json({ error: "Internal Server Error" });
-    //   }
-    // });
+        if (data.length === 0) {
+          res.status(404).json({ error: "Данные не найдены" });
+        } else {
+          res.status(200).json(data[0]);
+          let name = data[0].name;
+          products = data[0].products;
+          console.log(`Name: ${name}\nProducts count: ${products.length}`);
+          products.forEach((product) => {
+            console.log(product);
+          });
+        }
+      } catch (error) {
+        console.error("Error handling request:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+    });
 
     // Обработка POST-запроса с данными от клиента
     app.post("/api/buy", async (req, res) => {
@@ -149,36 +140,22 @@ async function run() {
       console.log(postData);
 
       try {
-        // await client.connect();
+        await client.connect();
 
-        // // Ваш код для выполнения запроса к MongoDB
-        // data = await client
-        //   .db(postData.category_name)
-        //   .collection(postData.subcategory_name)
-        //   .findOne({ name: postData.product_name });
+        // Ваш код для выполнения запроса к MongoDB
+        data = await client
+          .db(postData.category_name)
+          .collection(postData.subcategory_name)
+          .findOne({ name: postData.product_name });
 
-        // if (!data) {
-        //   res.status(404).json({ error: "Данные не найдены" });
-        // } else {
-        //   // Отправка ответа обратно клиенту
-        //   res.status(200).json({
-        //     data: data.products,
-        //   });
-        // }
-
-        const price = postData.price;
-
-        const orderId = (
-          Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000
-        ).toString();
-
-        const response = await cryptomusService.createPayment(price, orderId);
-        if (!response) {
-          res.status(500).send("Error!");
-          return;
+        if (!data) {
+          res.status(404).json({ error: "Данные не найдены" });
+        } else {
+          // Отправка ответа обратно клиенту
+          res.status(200).json({
+            data: data.products,
+          });
         }
-
-        res.redirect(response.result.url);
       } catch (error) {
         console.error("Error handling request:", error);
         res.status(500).json({ error: "Internal Server Error" });
