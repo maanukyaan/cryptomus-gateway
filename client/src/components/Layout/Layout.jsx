@@ -16,12 +16,9 @@ function Layout() {
       <Nav />
       <Header />
 
-      {/* <div id="content">
-        <ScrollToTop />
+      <div id="content">
         <Outlet />
-      </div> */}
-
-      <Outlet />
+      </div>
 
       <PaymentMethods />
       <Socials />
