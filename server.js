@@ -156,7 +156,7 @@ async function run() {
       }
     });
 
-    app.post("/api/buy", async (req, res) => {
+    app.post("/api/buy/", async (req, res) => {
       // Доступ к данным из тела POST-запроса
       const postData = req.body;
       console.log("\n\n\n\nPOST DATA: ", postData, "\n\n\n\n");
