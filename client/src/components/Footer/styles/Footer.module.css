@@ -23,8 +23,7 @@
 }
 
 .icon {
-  width: 70px;
-  height: 70px;
+  height: 50px;
   max-width: inherit;
 }
 @media screen and (max-width: 500px) {
@@ -61,7 +60,7 @@
 .ul li {
   color: #FFF;
   font-family: Inter;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -79,7 +78,7 @@
 .p {
   color: #F4F4F4;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -87,4 +86,17 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logo span {
+  color: #ffd044;
+  font-weight: bold;
+  font-family: "Inter";
+  font-size: 31px;
 }/*# sourceMappingURL=Footer.module.css.map */

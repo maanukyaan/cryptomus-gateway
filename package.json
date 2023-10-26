@@ -1,16 +1,17 @@
 {
-  "name": "mongodb",
+  "name": "facebook_accounts_e-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon server"
   },
   "keywords": [],
-  "author": "",
+  "author": "@kancni",
   "license": "ISC",
   "dependencies": {
     "argon2": "^0.31.1",
+    "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",

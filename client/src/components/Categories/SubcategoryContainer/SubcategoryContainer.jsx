@@ -24,8 +24,11 @@ function SubcategoryContainer() {
   const { categoryName, subcategoryName } = useParams();
   const [categoryData, setCategoryData] = useState(null);
 
-  const baseUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/getSubcategories"; // Базовый URL для запросов к бэкенду
-  const fullUrl = `${baseUrl}/${categoryName}/${subcategoryName}`;
+  let serverLink =
+    "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
+  serverLink = "https://localhost:5000";
+
+  const fullUrl = `${serverLink}/api/getSubcategories/${categoryName}/${subcategoryName}`;
 
   const fetchData = async (link) => {
     try {

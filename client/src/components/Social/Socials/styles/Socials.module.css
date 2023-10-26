@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 183px 0 0 0;
+  margin: 150px 0 0 0;
 }
 @media screen and (max-width: 1196px) {
   .Socials {

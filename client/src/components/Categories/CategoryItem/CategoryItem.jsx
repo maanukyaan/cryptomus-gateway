@@ -1,5 +1,3 @@
-
-
 import styles from "./styles/CategoryItem.module.css";
 import { NavLink } from "react-router-dom";
 
