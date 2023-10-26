@@ -18,7 +18,7 @@ export default function CategoryContainer() {
     try {
       let serverLink =
         "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
-      serverLink = "https://localhost:5000";
+      // serverLink = "https://localhost:5000";
 
       const response = await axios.get(
         `${serverLink}/api/getCategories/${link}`

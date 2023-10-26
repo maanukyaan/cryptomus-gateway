@@ -14,8 +14,8 @@ const APIKey =
   "G3r3iagshze48CS24pKLwF7OGjz6bCmOgrSZsp4Klp0wkZuoNOZduYDjdBOeNX9CyEwMgaR4wEhDhxwZYZR7KuQvJJJKntOpRFed0H07imaJCzcY31h8oTy400q3V4q0";
 const merchantId = "f8396565-16a1-4bf2-b47c-0cae09817b23";
 
-const PORT = process.env.SERVER_PORT || 7777;
-// const PORT = config.port;
+let PORT = process.env.SERVER_PORT || 7777;
+PORT = config.port;
 
 const app = express();
 
@@ -41,16 +41,21 @@ async function run() {
       cert: fs.readFileSync(__dirname + "/certificate.pem"),
     };
 
-    https.createServer(options, app).listen(PORT, () => {
-      console.log(`HTTPS SERVER STARTED ON PORT ${PORT}`);
+    // https.createServer(options, app).listen(PORT, () => {
+    //   console.log(`HTTPS SERVER STARTED ON PORT ${PORT}`);
+    // });
+
+    app.listen(PORT, (err) => {
+      err
+        ? console.log(err)
+        : console.log(`\nServer succesfully started on port ${PORT}\n`);
     });
 
     app.use(bodyParser.json()); // Добавление middleware для обработки JSON-данных
 
-    // Allow requests from 'https://localhost:3000'
     app.use(
       cors({
-        origin: "https://localhost:3000",
+        origin: "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site",
       })
     );
 
@@ -62,6 +67,7 @@ async function run() {
         "http://154.7.253.78",
         "https://valgoshop.com",
         "https://accspalace.com",
+        "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site",
       ]; // Список разрешенных IP-адресов
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
@@ -192,12 +198,37 @@ async function run() {
       }
     });
 
-    app.post("api/add/products/:category/:subcategory", async (req, res) => {
-      const loginAndPassword = req.body;
-      console.log("Claimed login and password: ", loginAndPassword);
+    app.post(
+      "/api/add/products/:category/:subcategory/:productId",
+      async (req, res) => {
+        const loginAndPassword = req.body;
+        console.log("Claimed login and password: ", loginAndPassword);
 
-      const { category, subcategory } = req.params;
-    });
+        const { category, subcategory, productId } = req.params;
+
+        try {
+          await client.connect();
+
+          await client
+            .db(category)
+            .collection(subcategory)
+            .updateOne(
+              { id: Number(productId) }, // Укажите фильтр для поиска документа, в котором нужно добавить данные
+              {
+                $push: {
+                  products: loginAndPassword,
+                },
+              }
+            );
+          // Отправить ответ об успешном выполнении операции
+          res.status(200).json({ message: "Data added to DB succesfully!" });
+          console.log("Data added to DB succesfully!");
+        } catch (error) {
+          console.log("Error while adding data to DB: ", error);
+          res.status(500).json({ error: "Error while adding data to DB" });
+        }
+      }
+    );
   } catch (err) {
     console.error("MongoDB connection error:", err);
   } finally {

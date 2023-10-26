@@ -47,7 +47,7 @@ function Buy() {
     // Определите URL вашего бэкенд-сервера
     let serverLink =
       "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
-    serverLink = "https://localhost:5000";
+    // serverLink = "https://localhost:5000";
 
     // Отправьте POST-запрос на бэкенд
     fetch(`${serverLink}/api/buy`, {
