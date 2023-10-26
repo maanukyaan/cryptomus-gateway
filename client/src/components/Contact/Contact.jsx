@@ -10,7 +10,7 @@ import youtube_icon from "../../img/Contact/youtube_icon.svg";
 
 function Contact() {
   return (
-    <div className={styles.Contact}>
+    <div className={styles.Contact} id="contact">
       <h2 className={styles.title}>Contact</h2>
       <div className={styles.section_1}>
         <div className={styles.section_1__left}>

@@ -1,7 +1,7 @@
-import cron from "node-cron";
-import CryptomusService from "../crytpomus/cryptomus.service.mjs";
+const cron = require("node-cron");
+const CryptomusService = require("../crytpomus/cryptomus.service.js");
 
-export default class CronService {
+module.exports = class CronService {
 
     constructor() {
         CryptomusService

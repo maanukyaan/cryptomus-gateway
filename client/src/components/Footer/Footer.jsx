@@ -1,6 +1,6 @@
 import styles from "./styles/Footer.module.css";
 
-import logo from "../../img/Footer/logo.svg";
+import logo from "../../img/Footer/logo.png";
 
 import telegram_icon from "../../img/Footer/telegram_icon.svg";
 import whatsapp_icon from "../../img/Footer/whatsapp_icon.svg";
@@ -13,7 +13,10 @@ function Footer() {
     <>
       <div className={styles.Footer}>
         <div className={styles.left}>
-          <img src={logo} alt="Logo" className={logo} />
+          <div className={styles.logo}>
+            <img src={logo} alt="Logo" className={styles.logo} />
+            <span>ACCSPALACE</span>
+          </div>
           <div className={styles.iconsContainer}>
             <a href="/" target="_blank" rel="noreferrer" className={styles.a}>
               <img src={telegram_icon} alt="Icon" className={styles.icon} />

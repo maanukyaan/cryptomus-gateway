@@ -23,13 +23,13 @@ export default function Nav() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/">Categories</a>
+            <a href="#content">Categories</a>
           </li>
           <li>
             <a href="/">Blog</a>
           </li>
           <li>
-            <a href="/">Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
         <button className={styles.button}>EN</button>

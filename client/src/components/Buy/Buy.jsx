@@ -29,20 +29,12 @@ function Buy() {
       "You will now be redirected to the payment page. Please, wait...",
       {
         position: "top-center",
-        duration: 10000
+        duration: 10000,
       }
     );
-    // Swal.fire({
-    //   icon: "success",
-    //   title:
-    //     "You will now be redirected to the payment page. <br />Please, wait...",
-    //   showConfirmButton: false,
-    //   timer: 10000,
-    //   width: "90%",
-    // });
 
     const formData = {
-      price: count * state.price,
+      price: String(count * state.price),
       amount: count,
       category_name: categoryName,
       subcategory_name: subcategoryName,
@@ -53,18 +45,19 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
-    // const backendUrl = "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/buy";
-    const backendUrl = "http://localhost:5000/api/buy";
+      "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
 
     // Отправьте POST-запрос на бэкенд
-    fetch(backendUrl, {
+    fetch(`${serverLink}/api/buy`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Заголовок для JSON-данных
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(data), // Преобразование данных в формат JSON
     })
       .then((response) => {
+        console.log(JSON.stringify(data));
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

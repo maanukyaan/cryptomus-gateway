@@ -3,8 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import styles from "./styles/CategoryContainer.module.css";
-import Product from "./../../Category/Product/Product";
-import ProductsContainer from "./../../Category/ProductsContainer/ProductsContainer";
+import Product from "./../../Products/Product/Product";
+import ProductsContainer from "./../../Products/ProductsContainer/ProductsContainer";
 
 import facebookAccounts from "../../../img/Product/facebook_accounts.svg";
 
@@ -16,8 +16,12 @@ export default function CategoryContainer() {
 
   const fetchData = async (link) => {
     try {
+      let serverLink =
+        "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
+      // serverLink = "https://localhost:5000";
+
       const response = await axios.get(
-        `https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/getCategories/${link}`
+        `${serverLink}/api/getCategories/${link}`
       );
       console.log(response.data);
       setCategoryData(response.data);
