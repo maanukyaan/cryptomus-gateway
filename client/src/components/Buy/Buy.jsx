@@ -45,6 +45,7 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
+    let serverLink =
       "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
     // serverLink = "http://localhost:5000";
 
