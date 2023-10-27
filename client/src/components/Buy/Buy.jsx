@@ -45,7 +45,6 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
-    let serverLink =
       "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
     // serverLink = "http://localhost:5000";
 
@@ -57,9 +56,16 @@ function Buy() {
       },
       body: JSON.stringify(data), // Преобразование данных в формат JSON
     })
-      .then((response) => response.json())
-      .then((data) => {
-        window.open(data.paymentUrl, "_blank");
+      .then((response) => {
+        console.log(JSON.stringify(data));
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        // Обработка успешного ответа от бэкенда
+        console.log(responseData);
       })
       .catch((error) => console.error(error));
   };
