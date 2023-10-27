@@ -43,7 +43,10 @@
 }
 
 .logo {
-  width: 13vw;
+  color: #ffd044;
+  font-weight: bold;
+  font-family: "Inter";
+  font-size: 23px;
 }
 
 .button {

@@ -26,7 +26,7 @@ function SubcategoryContainer() {
 
   let serverLink =
     "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
-  // serverLink = "https://localhost:5000";
+  // serverLink = "http://localhost:5000";
 
   const fullUrl = `${serverLink}/api/getSubcategories/${categoryName}/${subcategoryName}`;
 

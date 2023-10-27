@@ -34,8 +34,8 @@ function Buy() {
     );
 
     const formData = {
-      price: String(count * state.price),
-      amount: count,
+      amount: String(count * state.price),
+      count: count,
       category_name: categoryName,
       subcategory_name: subcategoryName,
       product_name: state.product_title,
@@ -45,14 +45,15 @@ function Buy() {
     data = { ...data, ...formData };
 
     // Определите URL вашего бэкенд-сервера
+    let serverLink =
       "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
+    // serverLink = "http://localhost:5000";
 
     // Отправьте POST-запрос на бэкенд
     fetch(`${serverLink}/api/buy`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Заголовок для JSON-данных
-        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(data), // Преобразование данных в формат JSON
     })
@@ -65,12 +66,9 @@ function Buy() {
       })
       .then((responseData) => {
         // Обработка успешного ответа от бэкенда
-        console.log("Server responded!");
+        console.log(responseData);
       })
-      .catch((error) => {
-        // Обработка ошибки
-        console.error(error);
-      });
+      .catch((error) => console.error(error));
   };
 
   return (

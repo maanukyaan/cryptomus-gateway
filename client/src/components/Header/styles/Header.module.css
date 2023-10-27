@@ -21,6 +21,9 @@
 }
 @media screen and (max-width: 1163px) {
   .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: inherit;
     padding: 0 40px;
   }
@@ -38,6 +41,7 @@
   .h2 {
     text-align: center;
     font-size: 65px;
+    line-height: 85px;
   }
 }
 
