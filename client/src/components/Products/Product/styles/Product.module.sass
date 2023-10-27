@@ -1,8 +1,25 @@
+.ProductsContainer
+    width: 100%
+    padding: 100px 60px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex-wrap: wrap
+
+    @media screen and ( max-width: 1346px )
+        flex-direction: column
+        padding: 100px 120px
+
+    @media screen and ( max-width: 777px )
+        padding: 100px 30px
+
 .Product
     width: 31%
     display: flex
     flex-direction: column
     align-items: center
+    @media screen and ( max-width: 1346px )
+        width: 100%
 
 .ProductContainer
     border-radius: 46px
@@ -14,13 +31,22 @@
     flex-direction: column
     justify-content: space-around
     width: 100%
-    min-height: 300px
-    @media screen and ( max-width: 1726px )
-        justify-content: flex-start
+    min-height: 400px
+    @media screen and ( max-width: 1433px )
+        justify-content: space-between
+
+    @media screen and ( max-width: 1346px )
+        min-height: 300px
+        justify-content: center
+        margin: 0 0 60px 0
 
     @media screen and ( max-width: 777px )
         font-size: 20px
         justify-content: space-between
+
+    @media screen and ( max-width: 448px )
+        justify-content: center
+        min-height: 400px
 
 .title
     color: #004C8F
@@ -29,6 +55,10 @@
     font-style: normal
     font-weight: 500
     line-height: normal
+
+    @media screen and ( max-width: 1430px )
+        font-size: 22px
+
     @media screen and ( max-width: 777px )
         font-size: 25px
 

@@ -1,18 +1,13 @@
 require("dotenv").config();
 const config = require("platformsh-config").config();
-const cors = require("cors");
 
 const express = require("express");
-const bodyParser = require("body-parser");
-const https = require("https");
-const fs = require("fs");
+const cors = require("cors");
 
-const CryptomusService = require("./modules/crytpomus/cryptomus.service.js");
-const CronService = require("./modules/cron/cron.service.js");
+const crypto = require("crypto");
+const axios = require("axios");
 
-const APIKey =
-  "G3r3iagshze48CS24pKLwF7OGjz6bCmOgrSZsp4Klp0wkZuoNOZduYDjdBOeNX9CyEwMgaR4wEhDhxwZYZR7KuQvJJJKntOpRFed0H07imaJCzcY31h8oTy400q3V4q0";
-const merchantId = "f8396565-16a1-4bf2-b47c-0cae09817b23";
+const nodemailer = require("nodemailer");
 
 let PORT = process.env.SERVER_PORT || 7777;
 PORT = config.port;
@@ -20,9 +15,9 @@ PORT = config.port;
 const app = express();
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri = process.env.MONGO_LINK;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const mongo_url = process.env.MONGO_LINK;
+// Creating a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(mongo_url, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -31,44 +26,28 @@ const client = new MongoClient(uri, {
 });
 
 async function run() {
-  const cryptomusService = new CryptomusService(APIKey, merchantId);
-  const cronService = new CronService(cryptomusService);
-  cronService.init();
-
   try {
-    const options = {
-      key: fs.readFileSync(__dirname + "/key.pem"),
-      cert: fs.readFileSync(__dirname + "/certificate.pem"),
-    };
-
-    // https.createServer(options, app).listen(PORT, () => {
-    //   console.log(`HTTPS SERVER STARTED ON PORT ${PORT}`);
-    // });
-
     app.listen(PORT, (err) => {
       err
         ? console.log(err)
         : console.log(`\nServer succesfully started on port ${PORT}\n`);
     });
 
-    app.use(bodyParser.json()); // Добавление middleware для обработки JSON-данных
-
     app.use(
-      cors({
-        origin: "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site",
+      express.json({
+        verify: (req, res, buf) => {
+          req.rawBody = buf.toString();
+        },
       })
-    );
+    ); // Middleware for reading JSON
 
     app.use((req, res, next) => {
       const allowedOrigins = [
+        "http://localhost:3000",
         "https://localhost:3000",
-        "https://localhost:5000",
-        "http://154.7.253.78:5000",
-        "http://154.7.253.78",
-        "https://valgoshop.com",
         "https://accspalace.com",
         "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site",
-      ]; // Список разрешенных IP-адресов
+      ]; //  Allowed IP-adresses
       const origin = req.headers.origin;
       if (allowedOrigins.includes(origin)) {
         res.setHeader("Access-Control-Allow-Origin", origin);
@@ -78,19 +57,29 @@ async function run() {
       next();
     });
 
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Successfully connected to MongoDB!\n");
+    app.use(cors());
 
+    // Connecting the client to the server
+    await client.connect();
+    // Sending a ping to confirm a successful connection
+    await client
+      .db("admin")
+      .command({ ping: 1 })
+      .then(() => {
+        console.log("Successfully connected to MongoDB!\n");
+      })
+      .catch((err) => {
+        console.log("Error while connecting to MongoDB! ", err);
+      });
+
+    // GET DATA
+    // Get categories
     app.get("/api/getCategories/:category", async (req, res) => {
       const { category } = req.params;
 
       try {
         await client.connect();
 
-        // Ваш код для выполнения запроса к MongoDB
         const data = await client
           .db(category)
           .collection("collections")
@@ -98,7 +87,7 @@ async function run() {
           .toArray();
 
         if (data.length === 0) {
-          res.status(404).json({ error: "Данные не найдены" });
+          res.status(404).json({ error: "Data has not found on DB." });
         } else {
           res.status(200).json(data);
         }
@@ -108,98 +97,99 @@ async function run() {
       }
     });
 
-    app.get("/api/getSubcategories/:db/:category/", async (req, res) => {
-      const { db, category } = req.params;
+    // Get subcategories
+    app.get(
+      "/api/getSubcategories/:category/:subcategory",
+      async (req, res) => {
+        const { category, subcategory } = req.params;
 
-      try {
-        await client.connect();
+        try {
+          await client.connect();
 
-        // Ваш код для выполнения запроса к MongoDB
-        const data = await client
-          .db(db)
-          .collection(category)
-          .find({})
-          .toArray();
+          const data = await client
+            .db(category)
+            .collection(subcategory)
+            .find({})
+            .toArray();
 
-        if (data.length === 0) {
-          res.status(404).json({ error: "Данные не найдены" });
-        } else {
-          res.status(200).json(data);
+          if (data.length === 0) {
+            res.status(404).json({ error: "Data has not found on DB." });
+          } else {
+            res.status(200).json(data);
+          }
+        } catch (error) {
+          console.error("Error handling request:", error);
+          res.status(500).json({ error: "Internal Server Error" });
         }
-      } catch (error) {
-        console.error("Error handling request:", error);
-        res.status(500).json({ error: "Internal Server Error" });
       }
-    });
+    );
 
-    app.get("/api/getProducts/:db/:category/", async (req, res) => {
-      const { db, category } = req.params;
-
-      try {
-        await client.connect();
-
-        // Ваш код для выполнения запроса к MongoDB
-        const data = await client
-          .db(db)
-          .collection(category)
-          .find({})
-          .toArray();
-
-        if (data.length === 0) {
-          res.status(404).json({ error: "Данные не найдены" });
-        } else {
-          res.status(200).json(data);
-        }
-      } catch (error) {
-        console.error("Error handling request:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
-    });
-
+    // PAYMENT
+    // Create payment
     app.post("/api/buy", async (req, res) => {
-      // Доступ к данным из тела POST-запроса
-      const postData = req.body;
-      console.log("\n\n\n\nPOST DATA: ", postData, "\n\n\n\n");
+      const { amount, currency } = req.body;
+      const cryptomusAPIUrl = "https://api.cryptomus.com/v1/payment";
 
-      try {
-        // await client.connect();
+      const data = {
+        amount,
+        currency: "USDT",
+        order_id: crypto.randomBytes(12).toString("hex"),
+        url_callback:
+          "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/payment/check",
+      };
 
-        // // Ваш код для выполнения запроса к MongoDB
-        // data = await client
-        //   .db(postData.category_name)
-        //   .collection(postData.subcategory_name)
-        //   .findOne({ name: postData.product_name });
+      const sign = crypto
+        .createHash("md5")
+        .update(
+          Buffer.from(JSON.stringify(data)).toString("base64") +
+            process.env.API_KEY
+        )
+        .digest("hex");
 
-        // if (!data) {
-        //   res.status(404).json({ error: "Данные не найдены" });
-        // } else {
-        //   // Отправка ответа обратно клиенту
-        //   res.status(200).json({
-        //     data: data.products,
-        //   });
-        // }
+      const response = await axios.post(cryptomusAPIUrl, data, {
+        headers: {
+          merchant: process.env.MERCHANT_ID,
+          sign: sign,
+        },
+      });
 
-        const price = postData.price;
-
-        const orderId = (
-          Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000
-        ).toString();
-
-        const response = await cryptomusService.createPayment(price, orderId);
-        if (!response) {
-          res.status(500).send("Error!");
-          return;
-        }
-
-        res.redirect(response.result.url);
-      } catch (error) {
-        console.error("Error handling request:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
+      const paymentUrl = response.data.result.url;
+      res.status(200).send({ paymentUrl });
     });
 
+    // Check payment
+    app.post("/api/payment/check", async (req, res) => {
+      const { sign } = req.body;
+
+      if (!sign) {
+        return res.status(400).send("Invalid payload.");
+      }
+
+      const data = JSON.parse(req.rawBody);
+
+      delete data.sign;
+
+      const hash = crypto
+        .createHash("md5")
+        .update(Buffer.from(JSON.stringify(data)).toString("base64") + API_KEY)
+        .digest("hex");
+
+      if (hash !== sign) {
+        return res.status(400).send("Invalid sign");
+      }
+
+      if (data.status === "paid") {
+        const emailText = "Оплата прошла успешно.";
+        sendEmail("8384838z@gmail.com", "Успешная оплата", emailText);
+      }
+
+      res.sendStatus(200);
+    });
+
+    // ADMIN DASHBOARD
+    // Add product
     app.post(
-      "/api/add/products/:category/:subcategory/:productId",
+      "/api/add/product/:category/:subcategory/:productId",
       async (req, res) => {
         const loginAndPassword = req.body;
         console.log("Claimed login and password: ", loginAndPassword);
@@ -213,14 +203,13 @@ async function run() {
             .db(category)
             .collection(subcategory)
             .updateOne(
-              { id: Number(productId) }, // Укажите фильтр для поиска документа, в котором нужно добавить данные
+              { id: Number(productId) },
               {
                 $push: {
                   products: loginAndPassword,
                 },
               }
             );
-          // Отправить ответ об успешном выполнении операции
           res.status(200).json({ message: "Data added to DB succesfully!" });
           console.log("Data added to DB succesfully!");
         } catch (error) {
@@ -230,10 +219,34 @@ async function run() {
       }
     );
   } catch (err) {
-    console.error("MongoDB connection error:", err);
+    console.error(err);
   } finally {
-    // Ensures that the client will close when you finish/error
+    // Ensuring that the client will close on finish/error
     await client.close();
+  }
+}
+
+async function sendEmail(to, subject, text) {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "maanukyaan@gmail.com",
+      pass: "Vahe_2004",
+    },
+  });
+
+  const mailOptions = {
+    from: "maanukyaan@gmail.com",
+    to: to,
+    subject: subject,
+    text: text,
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.response);
+  } catch (error) {
+    console.error("Error sending email:", error);
   }
 }
 
