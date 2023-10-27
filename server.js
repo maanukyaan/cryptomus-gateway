@@ -2,18 +2,21 @@ require("dotenv").config();
 const config = require("platformsh-config").config();
 
 const express = require("express");
+const cors = require("cors");
+
 const crypto = require("crypto");
 const axios = require("axios");
 
 const nodemailer = require("nodemailer");
 
-const PORT = config.port;
+let PORT = process.env.SERVER_PORT || 7777;
+PORT = config.port;
 
 const app = express();
 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const mongo_url = process.env.MONGO_LINK;
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// Creating a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(mongo_url, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -54,9 +57,11 @@ async function run() {
       next();
     });
 
-    // Connect the client to the server
+    app.use(cors());
+
+    // Connecting the client to the server
     await client.connect();
-    // Send a ping to confirm a successful connection
+    // Sending a ping to confirm a successful connection
     await client
       .db("admin")
       .command({ ping: 1 })
@@ -181,7 +186,7 @@ async function run() {
       res.sendStatus(200);
     });
 
-    // FOR ADMIN DASHBOARD
+    // ADMIN DASHBOARD
     // Add product
     app.post(
       "/api/add/product/:category/:subcategory/:productId",
@@ -216,7 +221,7 @@ async function run() {
   } catch (err) {
     console.error(err);
   } finally {
-    // Ensures that the client will close when you finish/error
+    // Ensuring that the client will close on finish/error
     await client.close();
   }
 }
