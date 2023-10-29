@@ -10,7 +10,7 @@ const axios = require("axios");
 const nodemailer = require("nodemailer");
 
 let PORT = process.env.SERVER_PORT || 7777;
-PORT = config.port;
+// PORT = config.port;
 
 const app = express();
 
@@ -124,10 +124,41 @@ async function run() {
       }
     );
 
+    // Get id of last product
+    app.get(
+      "/api/getLastProductId/:category/:subcategory",
+      async (req, res) => {
+        const { category, subcategory } = req.params;
+
+        try {
+          await client.connect();
+
+          const data = await client
+            .db(category)
+            .collection(subcategory)
+            .aggregate([
+              { $sort: { id: -1 } }, // Сортируем документы по убыванию id
+              { $limit: 1 }, // Получаем только первый документ
+              { $project: { _id: 0, id: 1 } }, // Выбираем только поле id
+            ])
+            .toArray();
+
+          if (data.length === 0) {
+            res.status(404).json({ error: "Data has not found on DB." });
+          } else {
+            res.status(200).json(data[0].id);
+          }
+        } catch (error) {
+          console.error("Error handling request:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+      }
+    );
+
     // PAYMENT
     // Create payment
     app.post("/api/buy", async (req, res) => {
-      const { amount, currency } = req.body;
+      const { amount } = req.body;
       const cryptomusAPIUrl = "https://api.cryptomus.com/v1/payment";
 
       const data = {
@@ -187,12 +218,39 @@ async function run() {
     });
 
     // ADMIN DASHBOARD
-    // Add product
+
+    // Create product
+    app.post("/api/create/product/:category/:subcategory", async (req, res) => {
+      const data = req.body;
+      console.log("[Add product] Data: ", data);
+
+      const { category, subcategory } = req.params;
+
+      try {
+        await client.connect();
+
+        await client.db(category).collection(subcategory).insertOne({
+          id: data.id,
+          name: data.name,
+          price: data.price,
+          card_description: data.card_description,
+          product_description: data.product_description,
+          products: [],
+        });
+        res.status(200).json({ message: "Product added to DB succesfully!" });
+        console.log("Product added to DB succesfully!");
+      } catch (error) {
+        console.log("Error while adding product to DB: ", error);
+        res.status(500).json({ error: "Error while adding product to DB" });
+      }
+    });
+
+    // Add positions
     app.post(
-      "/api/add/product/:category/:subcategory/:productId",
+      "/api/add/positions/:category/:subcategory/:productId",
       async (req, res) => {
-        const loginAndPassword = req.body;
-        console.log("Claimed login and password: ", loginAndPassword);
+        const data = req.body;
+        console.log("[Add positions] Data: ", data);
 
         const { category, subcategory, productId } = req.params;
 
@@ -206,15 +264,19 @@ async function run() {
               { id: Number(productId) },
               {
                 $push: {
-                  products: loginAndPassword,
+                  products: {
+                    $each: data,
+                  },
                 },
               }
             );
-          res.status(200).json({ message: "Data added to DB succesfully!" });
-          console.log("Data added to DB succesfully!");
+          res
+            .status(200)
+            .json({ message: "Positions added to DB succesfully!" });
+          console.log("Positions added to DB succesfully!");
         } catch (error) {
-          console.log("Error while adding data to DB: ", error);
-          res.status(500).json({ error: "Error while adding data to DB" });
+          console.log("Error while adding positions to DB: ", error);
+          res.status(500).json({ error: "Error while adding positions to DB" });
         }
       }
     );
