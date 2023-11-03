@@ -11,12 +11,18 @@ function PaymentMethods() {
     <div className={styles.PaymentMethodsContainer}>
       <div className={styles.PaymentMethods}>
         <div className={styles.left}>
-          <img src={bell} alt="bell" />
+          <img src={bell} alt="bell" className={styles.bell} />
         </div>
         <div className={styles.right}>
-          <h3 className={styles.title}>Contact us to pay using this payment methods</h3>
+          <h3 className={styles.title}>
+            Contact us to pay using this payment methods
+          </h3>
           <div className={styles.methods}>
-            <img className={styles.img} src={visa_mastercard} alt="visa_mastercard" />
+            <img
+              className={styles.img}
+              src={visa_mastercard}
+              alt="visa_mastercard"
+            />
             <img className={styles.img} src={wise} alt="wise" />
             <img className={styles.img} src={bitcoin} alt="bitcoin" />
             <img className={styles.img} src={usdt} alt="usdt" />

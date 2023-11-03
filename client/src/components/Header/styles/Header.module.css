@@ -44,6 +44,12 @@
     line-height: 85px;
   }
 }
+@media screen and (max-width: 600px) {
+  .h2 {
+    font-size: 35px;
+    line-height: 55px;
+  }
+}
 
 .h3 {
   margin-top: 45px;
@@ -59,6 +65,11 @@
   .h3 {
     margin: 45px 0;
     text-align: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .h3 {
+    font-size: 14px;
   }
 }
 

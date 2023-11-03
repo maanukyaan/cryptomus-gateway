@@ -20,17 +20,13 @@ export default function Nav() {
   return (
     <div className={styles.Nav}>
       <nav className={styles.nav}>
-        {/* <img src={logo} alt="Logo" className={styles.logo} /> */}
-        <div className={styles.logo}>ACCSPALACE</div>
+        <div className={styles.logo}>ACCS PALACE</div>
         <ul className={`${styles.ul} ${isMenuOpen ? styles.open : ""}`}>
           <li>
             <a href="/">Home</a>
           </li>
           <li>
             <a href="/#content">Categories</a>
-          </li>
-          <li>
-            <a href="/">Blog</a>
           </li>
           <li>
             <a href="#contact">Contact</a>
@@ -40,7 +36,7 @@ export default function Nav() {
         {windowWidth < 951 && (
           <Hamburger
             rounded
-            color="#fff"
+            color="#454545"
             toggled={isMenuOpen}
             toggle={toggleMenu}
           />

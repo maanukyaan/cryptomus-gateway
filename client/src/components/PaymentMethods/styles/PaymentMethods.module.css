@@ -37,13 +37,10 @@
   justify-content: center;
   align-items: center;
 }
-.left img {
-  height: 200px;
-}
-@media screen and (max-width: 1180px) {
-  .left {
-    width: inherit;
-  }
+
+.bell {
+  height: 150px;
+  max-width: inherit;
 }
 
 .right {
@@ -63,7 +60,7 @@
 .title {
   color: #000;
   font-family: Inter;
-  font-size: 30px;
+  font-size: 26px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

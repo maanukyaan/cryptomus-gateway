@@ -8,6 +8,9 @@ const crypto = require("crypto");
 const axios = require("axios");
 
 const nodemailer = require("nodemailer");
+const { Telegraf } = require("telegraf");
+const bot = new Telegraf(process.env.BOT_TOKEN);
+bot.launch();
 
 let PORT = process.env.SERVER_PORT || 7777;
 // PORT = config.port;
@@ -158,15 +161,34 @@ async function run() {
     // PAYMENT
     // Create payment
     app.post("/api/buy", async (req, res) => {
-      const { amount } = req.body;
+      const postData = req.body;
+
+      paymentId = Math.floor(Math.random() * (9999999 - 1000000) + 1000000);
+
+      try {
+        await client.connect();
+
+        await client
+          .db("payments")
+          .collection("payments")
+          .insertOne({
+            ...postData,
+            status: "processing",
+            paymentId: paymentId,
+          });
+      } catch (error) {
+        console.error("Error adding payment to DB:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      const { amount } = postData;
       const cryptomusAPIUrl = "https://api.cryptomus.com/v1/payment";
 
       const data = {
         amount,
         currency: "USDT",
         order_id: crypto.randomBytes(12).toString("hex"),
-        url_callback:
-          "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/payment/check",
+        url_callback: `https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site/api/payment/check?paymentId=${paymentId}`,
       };
 
       const sign = crypto
@@ -191,6 +213,7 @@ async function run() {
     // Check payment
     app.post("/api/payment/check", async (req, res) => {
       const { sign } = req.body;
+      const { paymentId } = req.params;
 
       if (!sign) {
         return res.status(400).send("Invalid payload.");
@@ -210,8 +233,38 @@ async function run() {
       }
 
       if (data.status === "paid") {
-        const emailText = "Оплата прошла успешно.";
-        sendEmail("8384838z@gmail.com", "Успешная оплата", emailText);
+        try {
+          await client.connect();
+
+          await client
+            .db("payments")
+            .collection("payments")
+            .updateOne(
+              { paymentId: paymentId },
+              {
+                $set: {
+                  status: "paid",
+                },
+              }
+            );
+        } catch (error) {
+          console.error("Error adding payment to DB:", error);
+          res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        const paymentData = await client
+          .db("payments")
+          .collection("payments")
+          .findOne({ paymentId: paymentId });
+
+        bot.telegram
+          .sendMessage(process.env.CHAT_ID, `NEW PURCHASE\n\n${paymentData}`)
+          .then(() => {
+            console.log("Message sent to Telegram succesfully");
+          })
+          .catch((error) => {
+            console.error("Error while sending message to Telegram:", error);
+          });
       }
 
       res.sendStatus(200);
@@ -229,16 +282,23 @@ async function run() {
       try {
         await client.connect();
 
-        await client.db(category).collection(subcategory).insertOne({
-          id: data.id,
-          name: data.name,
-          price: data.price,
-          card_description: data.card_description,
-          product_description: data.product_description,
-          products: [],
-        });
-        res.status(200).json({ message: "Product added to DB succesfully!" });
-        console.log("Product added to DB succesfully!");
+        await client
+          .db(category)
+          .collection(subcategory)
+          .insertOne({
+            id: data.id,
+            name: data.name,
+            price: data.price,
+            card_description: data.card_description,
+            product_description: data.product_description,
+            products: [],
+          })
+          .then(() => {
+            res
+              .status(200)
+              .json({ message: "Product added to DB succesfully!" });
+            console.log("Product added to DB succesfully!");
+          });
       } catch (error) {
         console.log("Error while adding product to DB: ", error);
         res.status(500).json({ error: "Error while adding product to DB" });

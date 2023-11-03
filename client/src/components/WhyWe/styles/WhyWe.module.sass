@@ -4,11 +4,10 @@
     display: flex
     flex-direction: column
     align-items: center
-    background-image: url("../../../img/WhyWe/background.png")
-    background-size: 82%
-    background-position: right 18vh
-    background-repeat: no-repeat
-    height: 1050px
+    // background-image: url("../../../img/WhyWe/background.png")
+    // background-size: 82%
+    // background-position: right 5vh
+    // background-repeat: no-repeat
     @media screen and ( max-width: 1077px )
         padding: 0 20px
 
@@ -47,16 +46,28 @@
             width: 300px
 
         &::before
-            content: url("../../../img/WhyWe/checkmark.svg")
+            content: ""
             display: inline-block
-            width: 80px
-            height: 80px
+            $size: 60px
+            width: $size
+            height: $size
+            background-image: url("../../../img/WhyWe/checkmark.svg")
+            background-size: 100%
+            background-position: center center
+            background-repeat: no-repeat
             margin: 0 16px 0 0
 
     @media screen and ( max-width: 806px )
         li
             font-size: 18px
+            $size: 50px
+            &::before
+                width: $size
+                height: $size
 
     @media screen and ( max-width: 600px )
         li
             font-size: 12px
+            &::before
+                width: 63px
+                height: 40px

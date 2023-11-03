@@ -29,10 +29,10 @@ function AccordeonItem({ title, text, index, openIndex, setOpenIndex }) {
       <div className={styles.right}>
         {isOpen ? (
           <RemoveOutlinedIcon
-            style={{ fontSize: window.innerWidth / 27.4285714 }}
+            style={{ fontSize: window.innerWidth / 35 }}
           />
         ) : (
-          <AddIcon style={{ fontSize: window.innerWidth / 27.4285714 }} />
+          <AddIcon style={{ fontSize: window.innerWidth / 35 }} />
         )}
       </div>
     </div>

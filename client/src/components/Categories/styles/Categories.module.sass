@@ -1,9 +1,21 @@
 .Categories
     display: flex
     align-items: center
-    justify-content: space-between
-    padding: 100px 120px 0px
+    justify-content: center
+    flex-direction: column
+    padding: 100px 120px 0
+    @media screen and ( max-width: 583px )
+        padding: 100px 40px 0
 
+.title
+    font-weight: bold
+    font-size: 20px
+    margin: 0 0 30px 0
+
+.container
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
     @media screen and ( max-width: 1100px )
         flex-direction: column
-        padding: 100px 30px 0

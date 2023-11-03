@@ -28,7 +28,8 @@
     "nodemailer": "^6.9.7",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "platformsh-config": "^2.4.1"
+    "platformsh-config": "^2.4.1",
+    "telegraf": "^4.15.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

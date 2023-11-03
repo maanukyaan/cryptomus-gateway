@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 function Product(props) {
   return (
     <div className={styles.Product}>
+      
       <div className={styles.ProductContainer}>
         {props.color === "gold" ? (
           <h2

@@ -1,8 +1,8 @@
 .accordeon_item {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 50px 0;
+  width: 70svw;
+  padding: 30px 0;
   border-bottom: 1px solid #524F4F;
   cursor: pointer;
 }
@@ -21,7 +21,7 @@
 .title {
   color: #000;
   font-family: Inter;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -29,6 +29,11 @@
 @media screen and (max-width: 1196px) {
   .title {
     font-size: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 16px;
   }
 }
 
@@ -46,5 +51,10 @@
   .text {
     width: 100%;
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .text {
+    font-size: 12px;
   }
 }/*# sourceMappingURL=AccordeonItem.module.css.map */

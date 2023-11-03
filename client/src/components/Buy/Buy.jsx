@@ -47,7 +47,7 @@ function Buy() {
     // Определите URL вашего бэкенд-сервера
     let serverLink =
       "https://www.main-bvxea6i-ij5pctw5a4zt4.us-3.platformsh.site";
-    // serverLink = "http://localhost:5000";
+    serverLink = "http://localhost:5000";
 
     // Отправьте POST-запрос на бэкенд
     fetch(`${serverLink}/api/buy`, {
@@ -65,8 +65,7 @@ function Buy() {
         return response.json();
       })
       .then((responseData) => {
-        // Обработка успешного ответа от бэкенда
-        console.log(responseData);
+        window.location.href = responseData.paymentUrl;
       })
       .catch((error) => console.error(error));
   };

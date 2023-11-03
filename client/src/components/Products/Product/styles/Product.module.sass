@@ -2,16 +2,25 @@
     width: 100%
     padding: 100px 60px
     display: flex
-    justify-content: space-between
+    flex-direction: column
     align-items: center
-    flex-wrap: wrap
+    justify-content: center
+    > div
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        flex-wrap: wrap
 
-    @media screen and ( max-width: 1346px )
-        flex-direction: column
-        padding: 100px 120px
+        @media screen and ( max-width: 1346px )
+            flex-direction: column
+            padding: 100px 120px
 
-    @media screen and ( max-width: 777px )
-        padding: 100px 30px
+        @media screen and ( max-width: 777px )
+            padding: 30px
+
+    @media screen and ( max-width: 555px )
+        padding: 100px 0
 
 .Product
     width: 31%
@@ -47,6 +56,11 @@
     @media screen and ( max-width: 448px )
         justify-content: center
         min-height: 400px
+
+.main_title
+    font-weight: bold
+    font-size: 20px
+    margin: 0 0 30px 0
 
 .title
     color: #004C8F

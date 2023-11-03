@@ -1,9 +1,9 @@
 .SocialItem {
   display: flex;
   align-items: center;
-  width: 30%;
-  height: 120px;
-  border-radius: 40px;
+  width: 27%;
+  height: 90px;
+  border-radius: 30px;
   background: #DDEFFF;
   position: relative;
 }
@@ -56,7 +56,7 @@
   position: relative;
   left: -20px;
   bottom: -3px;
-  height: 135px;
+  height: 100px;
 }
 @media screen and (max-width: 1470px) {
   .img {

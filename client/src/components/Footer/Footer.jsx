@@ -6,7 +6,7 @@ import telegram_icon from "../../img/Footer/telegram_icon.svg";
 import whatsapp_icon from "../../img/Footer/whatsapp_icon.svg";
 import facebook_icon from "../../img/Footer/facebook_icon.svg";
 import youtube_icon from "../../img/Footer/youtube_icon.svg";
-import ManukyanWeb from "./ManukyanWeb";
+// import ManukyanWeb from "./ManukyanWeb";
 
 function Footer() {
   return (
@@ -39,20 +39,23 @@ function Footer() {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/">Categories</a>
+                <a href="#content">Categories</a>
               </li>
               <li>
-                <a href="/">Blog</a>
-              </li>
-              <li>
-                <a href="/">Contact</a>
+                <a href="#contact">Contact</a>
               </li>
             </ul>
           </nav>
           <p className={styles.p}>Copyright © 2023 ACCSPALACE.COM</p>
+
+          <a href="https://manukyanweb.ru/">
+            <p className={styles.p} style={{
+              textDecoration: "underline"
+            }}>Created by Manukyan.Web</p>
+          </a>
         </div>
       </div>
-      <ManukyanWeb />
+      {/* <ManukyanWeb /> */}
     </>
   );
 }

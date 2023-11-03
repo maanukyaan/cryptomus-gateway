@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
@@ -8,15 +9,17 @@ import ProductDetails from "./components/Products/Product/ProductDetails/Product
 import Buy from "./components/Buy/Buy";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <div>
         <Toaster />
       </div>
 
       <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Categories />} />
@@ -35,8 +38,9 @@ function App() {
         </Route>
 
         <Route path="/buy/:categoryName/:subcategoryName" element={<Buy />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

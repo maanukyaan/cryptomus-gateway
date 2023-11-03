@@ -20,9 +20,9 @@ function Layout() {
         <Outlet />
       </div>
 
-      <PaymentMethods />
-      <Socials />
       <WhyWe />
+      <Socials />
+      <PaymentMethods />
       <FAQ />
       <Contact />
       <Footer />

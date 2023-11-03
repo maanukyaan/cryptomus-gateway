@@ -49,7 +49,7 @@ function ProductDetails() {
             <span className={styles.stock}>Stock: {state.stock}</span>
           </div>
 
-          <h4 className={styles.contact}>Contact sales team</h4>
+          {/* <h4 className={styles.contact}>Contact sales team</h4>
           <div className={styles.link_container}>
             <a href="/" className={styles.link}>
               WhatsApp
@@ -63,7 +63,7 @@ function ProductDetails() {
             >
               Telegram
             </a>
-          </div>
+          </div> */}
           <NavLink
             className={styles.link}
             to={state.buy_link}
@@ -74,8 +74,8 @@ function ProductDetails() {
               stock: state.stock,
             }}
             style={{
-              width: 500,
-              marginTop: 20,
+              width: 300,
+              marginTop: 40,
               fontWeight: "bold",
             }}
           >

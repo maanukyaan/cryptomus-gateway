@@ -1,12 +1,30 @@
 .Categories {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 100px 120px 0;
+}
+@media screen and (max-width: 583px) {
+  .Categories {
+    padding: 100px 40px 0;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 0 30px 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 100px 120px 0px;
 }
 @media screen and (max-width: 1100px) {
-  .Categories {
+  .container {
     flex-direction: column;
-    padding: 100px 30px 0;
   }
 }/*# sourceMappingURL=Categories.module.css.map */

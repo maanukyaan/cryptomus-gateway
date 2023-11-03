@@ -1,7 +1,6 @@
 .Nav
-    min-height: 320px
-    background-image: url("../../../img/Nav/ellipse.svg")
-    background-size: cover
+    color: #454545
+    padding: 0 0 100px 0
 
 .ul
     width: 100%
@@ -17,6 +16,13 @@
         line-height: 33px
         letter-spacing: 0em
         text-align: left
+
+        a
+            color: #454545
+            transition: .3s all ease
+
+            &:hover
+                color: #0f68bc
 
     &.open
         opacity: 1
@@ -38,15 +44,22 @@
             font-size: 60px
             margin: 0 0 20px 0
             line-height: inherit
+            a
+                color: #f1f1f1 !important
 
 .logo
     color: #ffd044
     font-weight: bold
     font-family: "Inter"
     font-size: 23px
+    cursor: default
+    white-space: nowrap
+    display: flex
+    justify-content: center
+    align-items: center
 
 .button
-    color: #f1f1f1 !important
+    color: #454545
     font-size: 19px
     font-weight: 500
     line-height: 36px
